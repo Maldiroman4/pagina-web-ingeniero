@@ -383,126 +383,277 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* COLUMNA DERECHA: Engranajes animados */}
+              {/* COLUMNA DERECHA: HUD de Engranajes — Ingeniería de Precisión */}
               <div className="hidden lg:flex justify-center items-center">
-                <div className="w-full max-w-md bg-slate-950/60 border border-white/5 hover:border-sky-500/15 rounded-2xl p-8 shadow-2xl backdrop-blur-md transition-all duration-500">
-                  <div className="flex justify-between items-center mb-4">
-                    <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Sistema de Transmisión</span>
-                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 rounded-full uppercase tracking-wider">● En Operación</span>
+                <div className="w-full max-w-[440px] rounded-xl overflow-hidden shadow-2xl" style={{ background: "linear-gradient(135deg, #050b18 0%, #0a1628 50%, #060d1c 100%)", border: "1px solid rgba(56,189,248,0.12)" }}>
+
+                  {/* Header tipo software CAD */}
+                  <div className="flex items-center justify-between px-5 py-3" style={{ borderBottom: "1px solid rgba(56,189,248,0.08)", background: "rgba(56,189,248,0.03)" }}>
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" style={{ boxShadow: "0 0 6px #34d399" }} />
+                      <span className="text-[10px] font-bold tracking-[0.2em] text-slate-400 uppercase">Gear Train · CAD/CAM View</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <div className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" style={{ animationDelay: "0.3s" }} />
+                      <span className="text-[9px] font-bold text-sky-400 tracking-widest uppercase">Live</span>
+                    </div>
                   </div>
 
-                  <div className="relative aspect-[5/3.2] bg-slate-900/50 rounded-xl overflow-hidden border border-white/5 flex items-center justify-center">
-                    <svg className="w-full h-full max-h-64" viewBox="0 0 240 140">
+                  {/* SVG: Engranajes con perfil involuta */}
+                  <div className="relative" style={{ background: "radial-gradient(ellipse at 50% 50%, #0d1f3c 0%, #050b18 70%)" }}>
+
+                    {/* Grid de ingeniería de fondo */}
+                    <svg className="absolute inset-0 w-full h-full opacity-[0.07]" viewBox="0 0 440 240" preserveAspectRatio="none">
                       <defs>
-                        <filter id="gs" x="-20%" y="-20%" width="140%" height="140%">
-                          <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#000" floodOpacity="0.6"/>
+                        <pattern id="eng-grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#38bdf8" strokeWidth="0.5"/>
+                        </pattern>
+                        <pattern id="eng-grid-major" width="100" height="100" patternUnits="userSpaceOnUse">
+                          <path d="M 100 0 L 0 0 0 100" fill="none" stroke="#38bdf8" strokeWidth="1"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill="url(#eng-grid)"/>
+                      <rect width="100%" height="100%" fill="url(#eng-grid-major)"/>
+                    </svg>
+
+                    {/* Ejes de referencia */}
+                    <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 440 240">
+                      <line x1="220" y1="0" x2="220" y2="240" stroke="#38bdf8" strokeWidth="0.5" strokeDasharray="4 4"/>
+                      <line x1="0" y1="120" x2="440" y2="120" stroke="#38bdf8" strokeWidth="0.5" strokeDasharray="4 4"/>
+                    </svg>
+
+                    <svg className="w-full" viewBox="0 0 340 200" style={{ height: "220px" }}>
+                      <defs>
+                        {/* Filtros y sombras */}
+                        <filter id="metal-shadow" x="-30%" y="-30%" width="160%" height="160%">
+                          <feDropShadow dx="0" dy="2" stdDeviation="4" floodColor="#000" floodOpacity="0.8"/>
+                          <feDropShadow dx="0" dy="0" stdDeviation="6" floodColor="#38bdf8" floodOpacity="0.08"/>
                         </filter>
-                        <radialGradient id="gg" cx="35%" cy="30%" r="65%">
-                          <stop offset="0%" stopColor="#fef9c3"/>
-                          <stop offset="40%" stopColor="#d97706"/>
-                          <stop offset="85%" stopColor="#92400e"/>
-                          <stop offset="100%" stopColor="#451a03"/>
+                        <filter id="glow-gold">
+                          <feGaussianBlur stdDeviation="3" result="blur"/>
+                          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                        <filter id="glow-contact">
+                          <feGaussianBlur stdDeviation="4" result="blur"/>
+                          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+
+                        {/* Gradiente bronce acero cepillado para G1 */}
+                        <radialGradient id="g1-grad" cx="38%" cy="32%" r="68%">
+                          <stop offset="0%" stopColor="#fef3c7"/>
+                          <stop offset="25%" stopColor="#f59e0b"/>
+                          <stop offset="55%" stopColor="#b45309"/>
+                          <stop offset="80%" stopColor="#78350f"/>
+                          <stop offset="100%" stopColor="#2d1500"/>
                         </radialGradient>
-                        <radialGradient id="gc" cx="35%" cy="30%" r="65%">
-                          <stop offset="0%" stopColor="#fed7aa"/>
-                          <stop offset="40%" stopColor="#c2410c"/>
-                          <stop offset="85%" stopColor="#7c2d12"/>
-                          <stop offset="100%" stopColor="#431407"/>
+                        <linearGradient id="g1-shine" x1="0%" y1="0%" x2="100%" y2="100%">
+                          <stop offset="0%" stopColor="#fef3c7" stopOpacity="0.25"/>
+                          <stop offset="40%" stopColor="#f59e0b" stopOpacity="0.1"/>
+                          <stop offset="100%" stopColor="#78350f" stopOpacity="0"/>
+                        </linearGradient>
+
+                        {/* Gradiente acero inoxidable para G2 */}
+                        <radialGradient id="g2-grad" cx="38%" cy="32%" r="68%">
+                          <stop offset="0%" stopColor="#e2e8f0"/>
+                          <stop offset="30%" stopColor="#94a3b8"/>
+                          <stop offset="60%" stopColor="#475569"/>
+                          <stop offset="85%" stopColor="#1e293b"/>
+                          <stop offset="100%" stopColor="#0a1221"/>
                         </radialGradient>
-                        <radialGradient id="gst" cx="35%" cy="30%" r="65%">
-                          <stop offset="0%" stopColor="#f1f5f9"/>
-                          <stop offset="40%" stopColor="#94a3b8"/>
-                          <stop offset="85%" stopColor="#334155"/>
+
+                        {/* Gradiente acero oscuro para G3 */}
+                        <radialGradient id="g3-grad" cx="38%" cy="32%" r="68%">
+                          <stop offset="0%" stopColor="#cbd5e1"/>
+                          <stop offset="35%" stopColor="#64748b"/>
+                          <stop offset="65%" stopColor="#334155"/>
                           <stop offset="100%" stopColor="#0f172a"/>
                         </radialGradient>
-                        {/* Líneas de velocidad */}
-                        <linearGradient id="speedLine" x1="0%" y1="0%" x2="100%" y2="0%">
+
+                        {/* Gradiente contacto meshing */}
+                        <radialGradient id="contact-glow" cx="50%" cy="50%" r="50%">
+                          <stop offset="0%" stopColor="#38bdf8" stopOpacity="0.9"/>
+                          <stop offset="100%" stopColor="#38bdf8" stopOpacity="0"/>
+                        </radialGradient>
+
+                        {/* Línea de pitch */}
+                        <linearGradient id="pitch-line" x1="0%" y1="0%" x2="100%" y2="0%">
                           <stop offset="0%" stopColor="#38bdf8" stopOpacity="0"/>
-                          <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.6"/>
+                          <stop offset="20%" stopColor="#38bdf8" stopOpacity="0.5"/>
+                          <stop offset="80%" stopColor="#38bdf8" stopOpacity="0.5"/>
                           <stop offset="100%" stopColor="#38bdf8" stopOpacity="0"/>
                         </linearGradient>
+
+                        {/* Clippath para G1 */}
+                        <clipPath id="g1-clip"><circle cx="80" cy="100" r="50"/></clipPath>
+                        <clipPath id="g2-clip"><circle cx="175" cy="100" r="34"/></clipPath>
+                        <clipPath id="g3-clip"><circle cx="240" cy="100" r="23"/></clipPath>
                       </defs>
 
-                      {/* Línea de transmisión de fuerza */}
-                      <line x1="60" y1="70" x2="180" y2="70" stroke="url(#speedLine)" strokeWidth="1" strokeDasharray="4 4">
-                        <animate attributeName="stroke-dashoffset" values="0;-16" dur="0.8s" repeatCount="indefinite"/>
-                      </line>
-
-                      {/* Engranaje conductor GRANDE - Bronce */}
-                      <g style={{ transformOrigin: "62px 70px", animation: `spin-clockwise ${8 / 1.0}s linear infinite` }}>
-                        {[0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340].map((deg, i) => (
-                          <rect key={i} x="58" y="34" width="8" height="13" rx="2"
-                            fill="url(#gg)" filter="url(#gs)"
-                            transform={`rotate(${deg} 62 70)`}/>
-                        ))}
-                        <circle cx="62" cy="70" r="30" fill="url(#gg)" filter="url(#gs)"/>
-                        <circle cx="62" cy="70" r="22" fill="#78350f" opacity="0.4"/>
-                        <circle cx="62" cy="70" r="10" fill="#1e293b" stroke="#d97706" strokeWidth="2"/>
-                        <line x1="62" y1="60" x2="62" y2="80" stroke="#d97706" strokeWidth="1.5" opacity="0.6"/>
-                        <line x1="52" y1="70" x2="72" y2="70" stroke="#d97706" strokeWidth="1.5" opacity="0.6"/>
-                        <circle cx="62" cy="70" r="3" fill="#f59e0b"/>
+                      {/* ─────────────────────────────────────
+                          ENGRANAJE 1: Conductor — Bronce Z=18
+                          R_pitch=27, R_add=30, R_ded=23.25
+                         ───────────────────────────────────── */}
+                      <g style={{ transformOrigin: "80px 100px", animation: "spin-clockwise 8s linear infinite" }}>
+                        {/* Cuerpo del engranaje con dientes trapezoidal-involuta */}
+                        {Array.from({ length: 18 }, (_, i) => {
+                          const angle = (i / 18) * Math.PI * 2;
+                          const toothA = (Math.PI * 2) / 18;
+                          const hw = toothA * 0.22;
+                          const Ra = 30, Rd = 23.25;
+                          const cx = 80, cy = 100;
+                          const pts = [
+                            [cx + Rd * Math.cos(angle - hw * 1.5), cy + Rd * Math.sin(angle - hw * 1.5)],
+                            [cx + Ra * Math.cos(angle - hw * 0.55), cy + Ra * Math.sin(angle - hw * 0.55)],
+                            [cx + Ra * Math.cos(angle + hw * 0.55), cy + Ra * Math.sin(angle + hw * 0.55)],
+                            [cx + Rd * Math.cos(angle + hw * 1.5), cy + Rd * Math.sin(angle + hw * 1.5)],
+                          ];
+                          return <polygon key={i} points={pts.map(p => p.map(v => v.toFixed(2)).join(",")).join(" ")} fill="url(#g1-grad)" stroke="#92400e" strokeWidth="0.4"/>;
+                        })}
+                        {/* Círculo de paso */}
+                        <circle cx="80" cy="100" r="27" fill="url(#g1-grad)" filter="url(#metal-shadow)"/>
+                        {/* Reflejos */}
+                        <circle cx="80" cy="100" r="27" fill="url(#g1-shine)"/>
+                        {/* Rebaje central */}
+                        <circle cx="80" cy="100" r="18" fill="#0a1221" stroke="#b45309" strokeWidth="1"/>
+                        {/* Nervios del disco */}
+                        {[0, 60, 120, 180, 240, 300].map((deg, i) => {
+                          const rad = deg * Math.PI / 180;
+                          return <line key={i} x1={80 + 8 * Math.cos(rad)} y1={100 + 8 * Math.sin(rad)} x2={80 + 16 * Math.cos(rad)} y2={100 + 16 * Math.sin(rad)} stroke="#d97706" strokeWidth="3" strokeLinecap="round"/>;
+                        })}
+                        {/* Buje central */}
+                        <circle cx="80" cy="100" r="7" fill="#1e293b" stroke="#f59e0b" strokeWidth="1.5"/>
+                        <circle cx="80" cy="100" r="3" fill="#f59e0b"/>
                       </g>
 
-                      {/* Engranaje intermedio MEDIANO - Cobre */}
-                      <g style={{ transformOrigin: "122px 70px", animation: `spin-counterclockwise ${8 / 1.6}s linear infinite` }}>
-                        {[0,24,48,72,96,120,144,168,192,216,240,264,288,312,336].map((deg, i) => (
-                          <rect key={i} x="118" y="49" width="7" height="11" rx="1.5"
-                            fill="url(#gc)" filter="url(#gs)"
-                            transform={`rotate(${deg} 122 70)`}/>
-                        ))}
-                        <circle cx="122" cy="70" r="20" fill="url(#gc)" filter="url(#gs)"/>
-                        <circle cx="122" cy="70" r="14" fill="#7c2d12" opacity="0.4"/>
-                        <circle cx="122" cy="70" r="7" fill="#1e293b" stroke="#c2410c" strokeWidth="1.5"/>
-                        <circle cx="122" cy="70" r="2.5" fill="#fb923c"/>
+                      {/* ─────────────────────────────────────
+                          ENGRANAJE 2: Acero Z=12
+                          R_pitch=18, R_add=21, R_ded=15.5
+                         ───────────────────────────────────── */}
+                      <g style={{ transformOrigin: "175px 100px", animation: "spin-counterclockwise 5.33s linear infinite" }}>
+                        {Array.from({ length: 12 }, (_, i) => {
+                          const angle = (i / 12) * Math.PI * 2;
+                          const toothA = (Math.PI * 2) / 12;
+                          const hw = toothA * 0.22;
+                          const Ra = 21, Rd = 15.5;
+                          const cx = 175, cy = 100;
+                          const pts = [
+                            [cx + Rd * Math.cos(angle - hw * 1.5), cy + Rd * Math.sin(angle - hw * 1.5)],
+                            [cx + Ra * Math.cos(angle - hw * 0.55), cy + Ra * Math.sin(angle - hw * 0.55)],
+                            [cx + Ra * Math.cos(angle + hw * 0.55), cy + Ra * Math.sin(angle + hw * 0.55)],
+                            [cx + Rd * Math.cos(angle + hw * 1.5), cy + Rd * Math.sin(angle + hw * 1.5)],
+                          ];
+                          return <polygon key={i} points={pts.map(p => p.map(v => v.toFixed(2)).join(",")).join(" ")} fill="url(#g2-grad)" stroke="#334155" strokeWidth="0.4"/>;
+                        })}
+                        <circle cx="175" cy="100" r="18" fill="url(#g2-grad)" filter="url(#metal-shadow)"/>
+                        <circle cx="175" cy="100" r="11" fill="#0a1221" stroke="#475569" strokeWidth="1"/>
+                        {[0, 90, 180, 270].map((deg, i) => {
+                          const rad = deg * Math.PI / 180;
+                          return <line key={i} x1={175 + 4 * Math.cos(rad)} y1={100 + 4 * Math.sin(rad)} x2={175 + 9 * Math.cos(rad)} y2={100 + 9 * Math.sin(rad)} stroke="#64748b" strokeWidth="2.5" strokeLinecap="round"/>;
+                        })}
+                        <circle cx="175" cy="100" r="4.5" fill="#1e293b" stroke="#94a3b8" strokeWidth="1"/>
+                        <circle cx="175" cy="100" r="2" fill="#94a3b8"/>
                       </g>
 
-                      {/* Engranaje conducido PEQUEÑO - Acero */}
-                      <g style={{ transformOrigin: "170px 70px", animation: `spin-clockwise ${8 / 2.7}s linear infinite` }}>
-                        {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg, i) => (
-                          <rect key={i} x="167" y="56" width="6" height="9" rx="1.5"
-                            fill="url(#gst)" filter="url(#gs)"
-                            transform={`rotate(${deg} 170 70)`}/>
-                        ))}
-                        <circle cx="170" cy="70" r="13" fill="url(#gst)" filter="url(#gs)"/>
-                        <circle cx="170" cy="70" r="8" fill="#1e293b" opacity="0.5"/>
-                        <circle cx="170" cy="70" r="5" fill="#1e293b" stroke="#64748b" strokeWidth="1"/>
-                        <circle cx="170" cy="70" r="2" fill="#94a3b8"/>
+                      {/* ─────────────────────────────────────
+                          ENGRANAJE 3: Conducido — Acero oscuro Z=8
+                          R_pitch=12, R_add=15, R_ded=9.5
+                         ───────────────────────────────────── */}
+                      <g style={{ transformOrigin: "240px 100px", animation: "spin-clockwise 3.2s linear infinite" }}>
+                        {Array.from({ length: 8 }, (_, i) => {
+                          const angle = (i / 8) * Math.PI * 2;
+                          const toothA = (Math.PI * 2) / 8;
+                          const hw = toothA * 0.22;
+                          const Ra = 15, Rd = 9.5;
+                          const cx = 240, cy = 100;
+                          const pts = [
+                            [cx + Rd * Math.cos(angle - hw * 1.5), cy + Rd * Math.sin(angle - hw * 1.5)],
+                            [cx + Ra * Math.cos(angle - hw * 0.55), cy + Ra * Math.sin(angle - hw * 0.55)],
+                            [cx + Ra * Math.cos(angle + hw * 0.55), cy + Ra * Math.sin(angle + hw * 0.55)],
+                            [cx + Rd * Math.cos(angle + hw * 1.5), cy + Rd * Math.sin(angle + hw * 1.5)],
+                          ];
+                          return <polygon key={i} points={pts.map(p => p.map(v => v.toFixed(2)).join(",")).join(" ")} fill="url(#g3-grad)" stroke="#1e293b" strokeWidth="0.4"/>;
+                        })}
+                        <circle cx="240" cy="100" r="12" fill="url(#g3-grad)" filter="url(#metal-shadow)"/>
+                        <circle cx="240" cy="100" r="7" fill="#0a1221" stroke="#334155" strokeWidth="0.75"/>
+                        <circle cx="240" cy="100" r="3.5" fill="#1e293b" stroke="#64748b" strokeWidth="0.75"/>
+                        <circle cx="240" cy="100" r="1.5" fill="#64748b"/>
                       </g>
 
-                      {/* Etiquetas técnicas */}
-                      <g>
-                        <rect x="32" y="108" width="60" height="16" rx="3" fill="#0f172a" stroke="#d97706" strokeWidth="0.75"/>
-                        <text x="62" y="119" fill="#fbbf24" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">CONDUCTOR · Z=18</text>
-                      </g>
-                      <g>
-                        <rect x="95" y="14" width="54" height="16" rx="3" fill="#0f172a" stroke="#c2410c" strokeWidth="0.75"/>
-                        <text x="122" y="25" fill="#fb923c" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">INTER. · Z=12</text>
-                      </g>
-                      <g>
-                        <rect x="143" y="108" width="54" height="16" rx="3" fill="#0f172a" stroke="#475569" strokeWidth="0.75"/>
-                        <text x="170" y="119" fill="#94a3b8" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">SALIDA · Z=8</text>
-                      </g>
+                      {/* ─── Puntos de contacto meshing con glow ─── */}
+                      <circle cx="107" cy="100" r="3" fill="url(#contact-glow)" filter="url(#glow-contact)" opacity="0.85">
+                        <animate attributeName="opacity" values="0.85;0.4;0.85" dur="1.2s" repeatCount="indefinite"/>
+                        <animate attributeName="r" values="3;4.5;3" dur="1.2s" repeatCount="indefinite"/>
+                      </circle>
+                      <circle cx="193" cy="100" r="2.5" fill="url(#contact-glow)" filter="url(#glow-contact)" opacity="0.75">
+                        <animate attributeName="opacity" values="0.75;0.35;0.75" dur="1s" repeatCount="indefinite"/>
+                        <animate attributeName="r" values="2.5;4;2.5" dur="1s" repeatCount="indefinite"/>
+                      </circle>
+
+                      {/* ─── Línea de paso horizontal ─── */}
+                      <line x1="30" y1="100" x2="270" y2="100" stroke="url(#pitch-line)" strokeWidth="0.6" strokeDasharray="5 4"/>
+
+                      {/* ─── Anotaciones técnicas estilo CAD ─── */}
+                      {/* G1 label */}
+                      <line x1="80" y1="65" x2="80" y2="30" stroke="#d97706" strokeWidth="0.6" opacity="0.6"/>
+                      <line x1="80" y1="30" x2="115" y2="30" stroke="#d97706" strokeWidth="0.6" opacity="0.6"/>
+                      <rect x="116" y="21" width="72" height="17" rx="2" fill="#0a1221" stroke="#d97706" strokeWidth="0.6" opacity="0.9"/>
+                      <text x="152" y="32" fill="#f59e0b" fontSize="7" fontWeight="700" textAnchor="middle" letterSpacing="0.4" fontFamily="monospace">Z₁=18 · m=3</text>
+
+                      {/* G2 label */}
+                      <line x1="175" y1="134" x2="175" y2="170" stroke="#64748b" strokeWidth="0.6" opacity="0.6"/>
+                      <line x1="175" y1="170" x2="210" y2="170" stroke="#64748b" strokeWidth="0.6" opacity="0.6"/>
+                      <rect x="211" y="162" width="72" height="16" rx="2" fill="#0a1221" stroke="#64748b" strokeWidth="0.6" opacity="0.9"/>
+                      <text x="247" y="173" fill="#94a3b8" fontSize="7" fontWeight="700" textAnchor="middle" letterSpacing="0.4" fontFamily="monospace">Z₂=12 · m=3</text>
+
+                      {/* G3 label */}
+                      <line x1="240" y1="65" x2="240" y2="30" stroke="#475569" strokeWidth="0.6" opacity="0.6"/>
+                      <line x1="240" y1="30" x2="275" y2="30" stroke="#475569" strokeWidth="0.6" opacity="0.6"/>
+                      <rect x="276" y="22" width="58" height="16" rx="2" fill="#0a1221" stroke="#475569" strokeWidth="0.6" opacity="0.9"/>
+                      <text x="305" y="33" fill="#64748b" fontSize="7" fontWeight="700" textAnchor="middle" letterSpacing="0.4" fontFamily="monospace">Z₃=8</text>
+
+                      {/* Flechas de dirección de giro */}
+                      <path d="M 52 75 A 27 27 0 0 1 75 73" stroke="#f59e0b" strokeWidth="1.2" fill="none" strokeLinecap="round" opacity="0.6"/>
+                      <polygon points="75,70 72,75 78,75" fill="#f59e0b" opacity="0.6"/>
+
+                      <path d="M 175 78 A 18 18 0 0 0 161 88" stroke="#94a3b8" strokeWidth="1" fill="none" strokeLinecap="round" opacity="0.5"/>
+                      <polygon points="161,88 157,84 163,82" fill="#94a3b8" opacity="0.5"/>
+
+                      {/* Círculos de paso punteados */}
+                      <circle cx="80" cy="100" r="27" fill="none" stroke="#d97706" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.25"/>
+                      <circle cx="175" cy="100" r="18" fill="none" stroke="#64748b" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.25"/>
+                      <circle cx="240" cy="100" r="12" fill="none" stroke="#475569" strokeWidth="0.5" strokeDasharray="3 3" opacity="0.25"/>
+
+                      {/* Cotas de distancia entre centros */}
+                      <line x1="80" y1="155" x2="175" y2="155" stroke="#38bdf8" strokeWidth="0.6" opacity="0.4"/>
+                      <line x1="80" y1="151" x2="80" y2="159" stroke="#38bdf8" strokeWidth="0.6" opacity="0.4"/>
+                      <line x1="175" y1="151" x2="175" y2="159" stroke="#38bdf8" strokeWidth="0.6" opacity="0.4"/>
+                      <text x="127" y="150" fill="#38bdf8" fontSize="6" textAnchor="middle" fontFamily="monospace" opacity="0.6">a₁₂ = 45mm</text>
+
+                      <line x1="175" y1="145" x2="240" y2="145" stroke="#38bdf8" strokeWidth="0.6" opacity="0.3"/>
+                      <line x1="175" y1="141" x2="175" y2="149" stroke="#38bdf8" strokeWidth="0.6" opacity="0.3"/>
+                      <line x1="240" y1="141" x2="240" y2="149" stroke="#38bdf8" strokeWidth="0.6" opacity="0.3"/>
+                      <text x="207" y="140" fill="#38bdf8" fontSize="6" textAnchor="middle" fontFamily="monospace" opacity="0.5">a₂₃ = 30mm</text>
                     </svg>
                   </div>
 
-                  {/* Info técnica debajo de los engranajes */}
-                  <div className="grid grid-cols-3 gap-3 mt-5 text-center">
-                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
-                      <div className="text-sky-400 text-xs font-black mb-0.5">2.25×</div>
-                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Relación Total</div>
-                    </div>
-                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
-                      <div className="text-amber-400 text-xs font-black mb-0.5">Módulo 2</div>
-                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Normalizado</div>
-                    </div>
-                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
-                      <div className="text-emerald-400 text-xs font-black mb-0.5">DIN 867</div>
-                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Norma</div>
+                  {/* Footer: datos técnicos tipo panel de control */}
+                  <div style={{ borderTop: "1px solid rgba(56,189,248,0.08)", background: "rgba(10,18,33,0.8)" }}>
+                    <div className="grid grid-cols-4 divide-x" style={{ borderColor: "rgba(56,189,248,0.06)" }}>
+                      {[
+                        { val: "i = 2.25", sub: "Relación total", col: "#38bdf8" },
+                        { val: "m = 3", sub: "Módulo DIN", col: "#f59e0b" },
+                        { val: "α = 20°", sub: "Pres. angle", col: "#94a3b8" },
+                        { val: "DIN 867", sub: "Norma ISO", col: "#34d399" },
+                      ].map((item, i) => (
+                        <div key={i} className="flex flex-col items-center py-3 px-2 gap-0.5" style={{ borderRight: i < 3 ? "1px solid rgba(56,189,248,0.07)" : "none" }}>
+                          <span className="text-[11px] font-black tracking-tight" style={{ color: item.col, fontFamily: "monospace" }}>{item.val}</span>
+                          <span className="text-[8px] font-semibold tracking-widest uppercase text-center" style={{ color: "#4a5568" }}>{item.sub}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
-
             </div>
           </section>
 
