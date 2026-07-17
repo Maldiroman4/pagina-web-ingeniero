@@ -10,8 +10,6 @@ import {
   Mail, 
   Clock, 
   Send, 
-  ArrowUp, 
-  ChevronUp, 
   Search,
   Settings,
   Shield,
@@ -26,10 +24,10 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [showSearchInput, setShowSearchInput] = useState(false);
   
-  // Gear simulator states
-  const [gearSpeed, setGearSpeed] = useState(1.0);
-  const [gearDirection, setGearDirection] = useState(1); // 1 = normal, -1 = reverse
-  const [gearMode, setGearMode] = useState<"torque" | "speed">("torque");
+  // Gear simulator states (kept for possible future use)
+  const [gearSpeed] = useState(1.0);
+  const [gearDirection] = useState(1);
+  const [gearMode] = useState<"torque" | "speed">("torque");
   
   // Spotlight position
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
@@ -257,221 +255,90 @@ export default function Home() {
             id="hero" 
             ref={heroRef}
             onMouseMove={handleHeroMouseMove}
-            className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-end pb-0 overflow-hidden"
           >
-            {/* Foto de fondo oscura */}
+            {/* Foto de fondo cinematográfica */}
             <div className="absolute inset-0 z-0">
               <img 
                 src="/img/hero_gears.png" 
                 alt="Maquinaria Metalúrgica Engranajes" 
-                className="w-full h-full object-cover opacity-75 scale-105"
+                className="w-full h-full object-cover scale-105"
+                style={{ filter: "brightness(0.45) saturate(0.7)" }}
               />
-              <div className="absolute inset-0 bg-radial-gradient(circle at center, rgba(6, 11, 22, 0.72) 0%, rgba(6, 11, 22, 0.98) 100%) z-10" />
+              {/* Degradado desde abajo */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #060b16 0%, #060b1690 40%, transparent 70%)" }} />
+              {/* Degradado desde arriba para header */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, #060b16aa 0%, transparent 25%)" }} />
             </div>
 
-            {/* Reflector interactivo (Spotlight cursor tracker) */}
+            {/* Spotlight cursor */}
             <div 
-              className="absolute inset-0 z-10 pointer-events-none transition-opacity duration-300 hidden md:block"
+              className="absolute inset-0 z-10 pointer-events-none hidden md:block"
               style={{
-                background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.08), transparent 80%)`
+                background: `radial-gradient(700px circle at ${mousePos.x}px ${mousePos.y}px, rgba(56, 189, 248, 0.06), transparent 70%)`
               }}
             />
 
-            <div className="container mx-auto px-6 max-w-6xl grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-12 items-center relative z-20">
-              {/* Left Column: Branding */}
-              <div className="flex flex-col items-start text-left max-w-xl">
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold font-brand tracking-tight bg-gradient-to-br from-white via-white to-sky-400 bg-clip-text text-transparent leading-[1.1] mb-6 drop-shadow-2xl">
-                  METALÚRGICA JOR-CIT
-                </h1>
-                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium mb-4 drop-shadow">
-                  Desde el año 1982 nos dedicamos a la fabricación y fresado de engranajes de alta precisión.
-                </p>
-                <p className="text-sm md:text-base text-slate-400 leading-relaxed font-normal mb-6 drop-shadow">
-                  Contamos con creadoras y talladoras automáticas que nos permiten dar una respuesta ágil y con tolerancias mecánicas óptimas a todo tipo de requerimientos industriales.
-                </p>
-                
-                {/* Tagline Pill con indicador LED cian */}
-                <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-sky-500/20 bg-sky-950/20 text-slate-200 text-xs md:text-sm font-semibold tracking-wider mb-8 uppercase">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_#34d399]" />
-                  Transmitimos movimiento y fuerza <span className="text-sky-400 font-extrabold">sin deslizamiento</span>
-                </div>
-
-                <div className="flex flex-row gap-4 w-full sm:w-auto">
-                  <button 
-                    onClick={() => scrollToSection("contacto")}
-                    className="flex-1 sm:flex-initial px-8 py-3.5 bg-gradient-to-r from-sky-500 to-sky-600 hover:from-sky-400 hover:to-sky-500 text-slate-950 font-bold rounded-lg transition-all duration-300 cursor-pointer shadow-lg shadow-sky-500/20 active:scale-95"
-                  >
-                    Cotizar Trabajos
-                  </button>
-                  <button 
-                    onClick={() => setView("gallery")}
-                    className="flex-1 sm:flex-initial px-8 py-3.5 bg-slate-900/80 hover:bg-slate-900 border border-white/10 hover:border-white/20 text-slate-200 font-semibold rounded-lg transition-all duration-300 cursor-pointer active:scale-95"
-                  >
-                    Ver Galería 3D
-                  </button>
-                </div>
+            {/* Contenido Hero — centrado verticalmente */}
+            <div className="relative z-20 flex flex-col items-center text-center px-6 pb-32 pt-44 w-full max-w-5xl mx-auto">
+              
+              {/* Badge superior */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-sky-500/25 bg-sky-950/20 backdrop-blur-sm text-sky-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-8">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+                Fabricación de Precisión Industrial · Desde 1982
               </div>
 
-              {/* Right Column: Meshing Gears Infographic */}
-              <div className="flex justify-center">
-                <div className="w-full max-w-md bg-slate-950/75 border border-white/5 hover:border-sky-500/10 rounded-2xl p-6 shadow-2xl backdrop-blur-md transition-all duration-500">
-                  <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-sm font-bold tracking-widest font-brand text-slate-400 uppercase">ENGRANAJES</h2>
-                    <span className="text-[10px] font-semibold text-sky-400 bg-sky-950/40 border border-sky-500/20 px-2 py-0.5 rounded-full uppercase">Transmisión Real</span>
+              {/* Headline principal */}
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.92] mb-6">
+                <span className="text-white drop-shadow-2xl">METALÚRGICA</span>
+                <br />
+                <span
+                  style={{
+                    background: "linear-gradient(95deg, #e2e8f0 0%, #7dd3fc 45%, #38bdf8 80%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  JOR-CIT
+                </span>
+              </h1>
+
+              {/* Subtítulo */}
+              <p className="text-slate-300 text-base md:text-xl font-light leading-relaxed max-w-2xl mb-10 tracking-wide">
+                Engranajes de alta precisión fabricados con maquinaria automática CNC.<br className="hidden md:block" />
+                Tolerancias óptimas para cualquier requerimiento industrial.
+              </p>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-16">
+                <button 
+                  onClick={() => scrollToSection("contacto")}
+                  className="px-10 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer shadow-xl shadow-sky-500/30 active:scale-95 hover:shadow-sky-400/40"
+                >
+                  Solicitar Cotización
+                </button>
+                <button 
+                  onClick={() => setView("gallery")}
+                  className="px-10 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-slate-200 font-semibold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer active:scale-95 backdrop-blur-sm"
+                >
+                  Ver Catálogo
+                </button>
+              </div>
+
+              {/* Strip de estadísticas */}
+              <div className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
+                {[
+                  { value: "+40", label: "Años de Experiencia", unit: "" },
+                  { value: "±0.01", label: "Tolerancia (mm)", unit: "" },
+                  { value: "DIN", label: "ISO · ANSI · B92.1", unit: "" },
+                  { value: "24h", label: "Respuesta Técnica", unit: "" },
+                ].map((stat, i) => (
+                  <div key={i} className="flex flex-col items-center justify-center py-6 px-4 bg-slate-900/60 backdrop-blur-md hover:bg-slate-900/80 transition-colors duration-300">
+                    <span className="text-2xl md:text-3xl font-black text-white tracking-tight leading-none mb-1">{stat.value}</span>
+                    <span className="text-[10px] md:text-xs text-slate-400 font-semibold tracking-wider uppercase text-center leading-tight">{stat.label}</span>
                   </div>
-
-                  {/* SVG Gear Train */}
-                  <div className="relative aspect-[5/3] bg-slate-900/40 rounded-xl overflow-hidden border border-white/5 py-4 flex items-center justify-center">
-                    <svg className="w-full h-full max-h-56" viewBox="0 0 200 120">
-                      <defs>
-                        <filter id="gear-shadow" x="-10%" y="-10%" width="120%" height="120%">
-                          <feDropShadow dx="1" dy="2" stdDeviation="2" floodColor="#000000" floodOpacity="0.5"/>
-                        </filter>
-                        
-                        <radialGradient id="grad-gold" cx="50%" cy="40%" r="60%">
-                          <stop offset="0%" stopColor="#fef08a"/>
-                          <stop offset="50%" stopColor="#e69c24"/>
-                          <stop offset="90%" stopColor="#b45309"/>
-                          <stop offset="100%" stopColor="#78350f"/>
-                        </radialGradient>
-                        <radialGradient id="grad-copper" cx="50%" cy="40%" r="60%">
-                          <stop offset="0%" stopColor="#ffedd5"/>
-                          <stop offset="40%" stopColor="#ea580c"/>
-                          <stop offset="85%" stopColor="#9a3412"/>
-                          <stop offset="100%" stopColor="#431407"/>
-                        </radialGradient>
-                        <radialGradient id="grad-steel" cx="50%" cy="40%" r="60%">
-                          <stop offset="0%" stopColor="#f8fafc"/>
-                          <stop offset="50%" stopColor="#94a3b8"/>
-                          <stop offset="90%" stopColor="#475569"/>
-                          <stop offset="100%" stopColor="#1e293b"/>
-                        </radialGradient>
-                      </defs>
-
-                      {/* Conductor Gear (Brass, 18T) */}
-                      <g 
-                        id="gear1" 
-                        filter="url(#gear-shadow)"
-                        style={{
-                          transformOrigin: "55px 60px",
-                          animation: gearSpeed > 0 ? `${baseSpeed > 0 ? "spin-clockwise" : "spin-counterclockwise"} ${gear1Duration} linear infinite` : "none"
-                        }}
-                      >
-                        <circle cx="55" cy="60" r="27" fill="url(#grad-gold)" />
-                        <circle cx="55" cy="60" r="30" fill="none" stroke="url(#grad-gold)" strokeWidth="6" strokeDasharray="5.0 5.47" />
-                        <circle cx="55" cy="45" r="3" fill="#222" opacity="0.3" />
-                        <circle cx="55" cy="75" r="3" fill="#222" opacity="0.3" />
-                        <circle cx="40" cy="60" r="3" fill="#222" opacity="0.3" />
-                        <circle cx="70" cy="60" r="3" fill="#222" opacity="0.3" />
-                        <circle cx="55" cy="60" r="8" fill="#fff" stroke="#b45309" strokeWidth="1.5" />
-                        <circle cx="55" cy="60" r="3.5" fill="#111" />
-                        <path d="M 44 60 A 11 11 0 0 1 55 49 L 55 45 L 61 51 L 55 57 L 55 53 A 7 7 0 0 0 48 60 Z" fill="#ffffff" opacity="0.9" />
-                      </g>
-
-                      {/* Intermediate Gear (Copper, 12T) */}
-                      <g 
-                        id="gear2" 
-                        filter="url(#gear-shadow)"
-                        style={{
-                          transformOrigin: "103px 60px",
-                          animation: gearSpeed > 0 ? `${baseSpeed > 0 ? "spin-counterclockwise" : "spin-clockwise"} ${gear2Duration} linear infinite` : "none"
-                        }}
-                      >
-                        <circle cx="103" cy="60" r="18" fill="url(#grad-copper)" />
-                        <circle cx="103" cy="60" r="21" fill="none" stroke="url(#grad-copper)" strokeWidth="5" strokeDasharray="5.0 5.99" />
-                        <circle cx="103" cy="50" r="2" fill="#222" opacity="0.3" />
-                        <circle cx="103" cy="70" r="2" fill="#222" opacity="0.3" />
-                        <circle cx="93" cy="60" r="2" fill="#222" opacity="0.3" />
-                        <circle cx="113" cy="60" r="2" fill="#222" opacity="0.3" />
-                        <circle cx="103" cy="60" r="6" fill="#fff" stroke="#9a3412" strokeWidth="1.5" />
-                        <circle cx="103" cy="60" r="2.5" fill="#111" />
-                        <path d="M 95 60 A 8 8 0 0 1 103 52 L 103 48 L 109 54 L 103 60 L 103 56 A 4 4 0 0 0 99 60 Z" fill="#ffffff" opacity="0.9" transform="rotate(180 103 60)" />
-                      </g>
-
-                      {/* Driven Gear (Steel, 8T) */}
-                      <g 
-                        id="gear3" 
-                        filter="url(#gear-shadow)"
-                        style={{
-                          transformOrigin: "143px 60px",
-                          animation: gearSpeed > 0 ? `${baseSpeed > 0 ? "spin-clockwise" : "spin-counterclockwise"} ${gear3Duration} linear infinite` : "none"
-                        }}
-                      >
-                        <circle cx="143" cy="60" r="12" fill="url(#grad-steel)" />
-                        <circle cx="143" cy="60" r="15" fill="none" stroke="url(#grad-steel)" strokeWidth="4" strokeDasharray="5.0 6.78" />
-                        <circle cx="143" cy="53" r="1.5" fill="#222" opacity="0.3" />
-                        <circle cx="143" cy="67" r="1.5" fill="#222" opacity="0.3" />
-                        <circle cx="143" cy="60" r="5" fill="#fff" stroke="#475569" strokeWidth="1" />
-                        <circle cx="143" cy="60" r="2" fill="#111" />
-                        <path d="M 135 60 A 8 8 0 0 1 143 52 L 143 48 L 149 54 L 143 60 L 143 56 A 4 4 0 0 0 139 60 Z" fill="#ffffff" opacity="0.9" />
-                      </g>
-
-                      {/* Labels */}
-                      <g transform="translate(55, 60)" className="pointer-events-none">
-                        <rect x="-24" y="-30" width="48" height="11" rx="2" fill="rgba(255, 255, 255, 0.95)" stroke="#b45309" strokeWidth="0.75"/>
-                        <text x="0" y="-22" fill="#78350f" fontSize="6" fontWeight="800" textAnchor="middle" letterSpacing="0.2">FUERZA</text>
-                      </g>
-                      
-                      <g transform="translate(143, 60)" className="pointer-events-none">
-                        <rect x="-26" y="16" width="52" height="11" rx="2" fill="rgba(255, 255, 255, 0.95)" stroke="#475569" strokeWidth="0.75"/>
-                        <text x="0" y="24" fill="#1e293b" fontSize="5.5" fontWeight="800" textAnchor="middle" letterSpacing="0.2">VELOCIDAD</text>
-                      </g>
-                    </svg>
-                  </div>
-
-                  {/* Simulation Controls Dashboard */}
-                  <div className="mt-6 flex flex-col gap-4 text-xs font-semibold">
-                    <div className="flex flex-col gap-2">
-                      <div className="flex justify-between items-center text-slate-400">
-                        <span>Frecuencia (Velocidad)</span>
-                        <span className="text-sky-400 font-brand font-bold">{gearSpeed.toFixed(2)}x</span>
-                      </div>
-                      <input 
-                        type="range" 
-                        min="0" 
-                        max="3" 
-                        step="0.25" 
-                        value={gearSpeed}
-                        onChange={(e) => setGearSpeed(parseFloat(e.target.value))}
-                        className="w-full h-1 bg-slate-900 border border-white/5 rounded-lg appearance-none cursor-pointer accent-sky-400"
-                      />
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3 mt-1">
-                      <button 
-                        onClick={() => setGearDirection(prev => prev * -1)}
-                        className="flex items-center justify-center gap-2 py-2.5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/10 rounded-lg text-slate-300 hover:text-sky-400 transition-all cursor-pointer"
-                      >
-                        <RotateCw size={14} className="animate-spin-slow" />
-                        <span>Invertir Giro</span>
-                      </button>
-                      
-                      <button 
-                        onClick={() => setGearMode(prev => prev === "torque" ? "speed" : "torque")}
-                        className="flex items-center justify-center gap-2 py-2.5 bg-slate-900/60 hover:bg-slate-900 border border-white/5 hover:border-white/10 rounded-lg text-slate-300 hover:text-sky-400 transition-all cursor-pointer"
-                      >
-                        <Zap size={14} className={gearMode === "torque" ? "text-amber-400" : "text-sky-400"} />
-                        <span>Modo: <strong className="uppercase">{gearMode}</strong></span>
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* 3 Mechanical Transmission Pillars */}
-                  <div className="grid grid-cols-3 gap-2 mt-6 border-t border-white/5 pt-5 text-[10px] text-center text-slate-400">
-                    <div className="flex flex-col items-center gap-1.5 p-2 rounded-lg bg-slate-900/20 border border-white/5">
-                      <Settings size={14} className="text-sky-500 animate-spin-slow" />
-                      <span>Fijar Velocidad</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-1.5 p-2 rounded-lg bg-slate-900/20 border border-white/5">
-                      <Shield size={14} className="text-amber-500" />
-                      <span>Multiplicar Fuerza</span>
-                    </div>
-                    <div className="flex flex-col items-center gap-1.5 p-2 rounded-lg bg-slate-900/20 border border-white/5">
-                      <RotateCw size={14} className="text-teal-500" />
-                      <span>Guiar Sentido</span>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>
