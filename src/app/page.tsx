@@ -14,7 +14,8 @@ import {
   Settings,
   Shield,
   RotateCw,
-  Zap
+  Zap,
+  ChevronUp
 } from "lucide-react";
 
 export default function Home() {
