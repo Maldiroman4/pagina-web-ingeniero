@@ -86,3 +86,98 @@ h1, h2, h3, h4, h5, h6 {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-cyan);
 }
+
+/* ==========================================
+   HERO CINEMATIC ANIMATIONS
+   ========================================== */
+
+/* Ken Burns: slow zoom-in + drift right */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1.0) translate(0px, 0px);
+    filter: brightness(0.45) saturate(0.7);
+  }
+  35% {
+    filter: brightness(0.42) saturate(0.65);
+  }
+  70% {
+    filter: brightness(0.48) saturate(0.75);
+  }
+  100% {
+    transform: scale(1.12) translate(-2%, -1.5%);
+    filter: brightness(0.45) saturate(0.7);
+  }
+}
+
+/* Light sweep from left to right */
+@keyframes light-sweep {
+  0% {
+    transform: translateX(-120%) skewX(-12deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateX(220%) skewX(-12deg);
+    opacity: 0;
+  }
+}
+
+/* Vignette pulse */
+@keyframes vignette-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.88; }
+}
+
+/* Floating dust particles */
+@keyframes particle-float {
+  0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-80px) translateX(20px); opacity: 0; }
+}
+
+/* Slow horizontal pan (alternate direction) */
+@keyframes ken-burns-2 {
+  0% {
+    transform: scale(1.08) translate(0px, 0px);
+    filter: brightness(0.43) saturate(0.68);
+  }
+  50% {
+    filter: brightness(0.47) saturate(0.72);
+  }
+  100% {
+    transform: scale(1.0) translate(2%, 1%);
+    filter: brightness(0.45) saturate(0.7);
+  }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-ken-burns-2 {
+  animation: ken-burns-2 22s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.animate-light-sweep {
+  animation: light-sweep 8s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-light-sweep-2 {
+  animation: light-sweep 13s ease-in-out 4s infinite;
+  will-change: transform;
+}
+
+.animate-particle {
+  animation: particle-float linear infinite;
+  will-change: transform;
+}
+

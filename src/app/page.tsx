@@ -258,18 +258,63 @@ export default function Home() {
             onMouseMove={handleHeroMouseMove}
             className="relative min-h-screen flex flex-col items-center justify-end pb-0 overflow-hidden"
           >
-            {/* Foto de fondo cinematográfica */}
-            <div className="absolute inset-0 z-0">
+            {/* Foto de fondo cinematográfica — Ken Burns + barridos de luz */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
               <img 
                 src="/img/hero_gears.png" 
                 alt="Maquinaria Metalúrgica Engranajes" 
-                className="w-full h-full object-cover scale-105"
-                style={{ filter: "brightness(0.45) saturate(0.7)" }}
+                className="w-full h-full object-cover animate-ken-burns"
               />
               {/* Degradado desde abajo */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #060b16 0%, #060b1690 40%, transparent 70%)" }} />
-              {/* Degradado desde arriba para header */}
-              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, #060b16aa 0%, transparent 25%)" }} />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, #060b16 0%, #060b1688 35%, transparent 65%)" }} />
+              {/* Degradado desde arriba */}
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, #060b16bb 0%, transparent 20%)" }} />
+              {/* Viñeta lateral */}
+              <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at center, transparent 50%, #060b16aa 100%)" }} />
+
+              {/* Barrido de luz 1 — rayo diagonal */}
+              <div 
+                className="absolute inset-y-0 w-[60px] animate-light-sweep pointer-events-none"
+                style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.04), rgba(56,189,248,0.06), rgba(255,255,255,0.04), transparent)" }}
+              />
+              {/* Barrido de luz 2 — más ancho y suave */}
+              <div 
+                className="absolute inset-y-0 w-[120px] animate-light-sweep-2 pointer-events-none"
+                style={{ background: "linear-gradient(to right, transparent, rgba(56,189,248,0.03), rgba(255,255,255,0.05), rgba(56,189,248,0.03), transparent)" }}
+              />
+
+              {/* Partículas de polvo industrial flotando */}
+              {[
+                { left: "12%", bottom: "20%", size: 2, dur: "6s", delay: "0s" },
+                { left: "28%", bottom: "35%", size: 1.5, dur: "9s", delay: "2s" },
+                { left: "45%", bottom: "15%", size: 2.5, dur: "7s", delay: "1s" },
+                { left: "60%", bottom: "28%", size: 1, dur: "11s", delay: "3s" },
+                { left: "73%", bottom: "18%", size: 2, dur: "8s", delay: "0.5s" },
+                { left: "85%", bottom: "40%", size: 1.5, dur: "10s", delay: "4s" },
+                { left: "20%", bottom: "50%", size: 1, dur: "13s", delay: "6s" },
+                { left: "55%", bottom: "45%", size: 1.5, dur: "12s", delay: "2.5s" },
+              ].map((p, i) => (
+                <div
+                  key={i}
+                  className="absolute rounded-full animate-particle pointer-events-none"
+                  style={{
+                    left: p.left,
+                    bottom: p.bottom,
+                    width: `${p.size}px`,
+                    height: `${p.size}px`,
+                    background: "rgba(148,163,184,0.6)",
+                    animationDuration: p.dur,
+                    animationDelay: p.delay,
+                    boxShadow: `0 0 ${p.size * 2}px rgba(56,189,248,0.4)`,
+                  }}
+                />
+              ))}
+
+              {/* Líneas de escaneo horizontales sutiles */}
+              <div 
+                className="absolute inset-0 pointer-events-none opacity-[0.015]"
+                style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.3) 3px, rgba(255,255,255,0.3) 4px)" }}
+              />
             </div>
 
             {/* Spotlight cursor */}
