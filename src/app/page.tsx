@@ -279,67 +279,184 @@ export default function Home() {
               }}
             />
 
-            {/* Contenido Hero — centrado verticalmente */}
-            <div className="relative z-20 flex flex-col items-center text-center px-6 pb-32 pt-44 w-full max-w-5xl mx-auto">
-              
-              {/* Badge superior */}
-              <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-sky-500/25 bg-sky-950/20 backdrop-blur-sm text-sky-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-8">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
-                Fabricación de Precisión Industrial · Desde 1982
+            {/* Contenido Hero — layout 2 columnas */}
+            <div className="relative z-20 w-full max-w-7xl mx-auto px-6 pt-36 pb-24 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+
+              {/* COLUMNA IZQUIERDA: Texto */}
+              <div className="flex flex-col items-start text-left">
+                <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full border border-sky-500/25 bg-sky-950/20 backdrop-blur-sm text-sky-300 text-[11px] font-bold tracking-[0.2em] uppercase mb-7">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#34d399]" />
+                  Fabricación de Precisión · Desde 1982
+                </div>
+
+                <h1 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight leading-[0.9] mb-6">
+                  <span className="text-white">METALÚRGICA</span>
+                  <br />
+                  <span style={{ background: "linear-gradient(95deg, #e2e8f0 0%, #7dd3fc 45%, #38bdf8 80%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                    JOR-CIT
+                  </span>
+                </h1>
+
+                <p className="text-slate-300 text-base md:text-lg font-light leading-relaxed max-w-xl mb-10 tracking-wide">
+                  Engranajes de alta precisión fabricados con maquinaria automática CNC.
+                  Tolerancias óptimas para cualquier requerimiento industrial.
+                </p>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                  <button
+                    onClick={() => scrollToSection("contacto")}
+                    className="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer shadow-xl shadow-sky-500/30 active:scale-95"
+                  >
+                    Solicitar Cotización
+                  </button>
+                  <a
+                    href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20Metal%C3%BArgica%20JOR-CIT.%20Quisiera%20consultar%20por%20un%20presupuesto."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 px-8 py-4 bg-[#25D366] hover:bg-[#1db954] text-white font-bold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer shadow-xl shadow-green-500/30 active:scale-95"
+                  >
+                    <svg viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5 flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Ing. Antezana
+                  </a>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+                  {[
+                    { value: "+40", label: "Años" },
+                    { value: "±0.01", label: "mm precisión" },
+                    { value: "DIN", label: "ISO · ANSI" },
+                    { value: "24h", label: "Respuesta" },
+                  ].map((stat, i) => (
+                    <div key={i} className="flex flex-col items-center py-4 px-2 bg-slate-900/60 backdrop-blur-md border border-white/5 rounded-xl hover:border-sky-500/20 transition-colors">
+                      <span className="text-xl md:text-2xl font-black text-white leading-none mb-1">{stat.value}</span>
+                      <span className="text-[10px] text-slate-400 font-semibold tracking-wider uppercase text-center">{stat.label}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              {/* Headline principal */}
-              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.92] mb-6">
-                <span className="text-white drop-shadow-2xl">METALÚRGICA</span>
-                <br />
-                <span
-                  style={{
-                    background: "linear-gradient(95deg, #e2e8f0 0%, #7dd3fc 45%, #38bdf8 80%)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  JOR-CIT
-                </span>
-              </h1>
-
-              {/* Subtítulo */}
-              <p className="text-slate-300 text-base md:text-xl font-light leading-relaxed max-w-2xl mb-10 tracking-wide">
-                Engranajes de alta precisión fabricados con maquinaria automática CNC.<br className="hidden md:block" />
-                Tolerancias óptimas para cualquier requerimiento industrial.
-              </p>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-16">
-                <button 
-                  onClick={() => scrollToSection("contacto")}
-                  className="px-10 py-4 bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer shadow-xl shadow-sky-500/30 active:scale-95 hover:shadow-sky-400/40"
-                >
-                  Solicitar Cotización
-                </button>
-                <button 
-                  onClick={() => setView("gallery")}
-                  className="px-10 py-4 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-white/30 text-slate-200 font-semibold text-sm tracking-widest uppercase rounded-lg transition-all duration-300 cursor-pointer active:scale-95 backdrop-blur-sm"
-                >
-                  Ver Catálogo
-                </button>
-              </div>
-
-              {/* Strip de estadísticas */}
-              <div className="w-full max-w-3xl grid grid-cols-2 md:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
-                {[
-                  { value: "+40", label: "Años de Experiencia", unit: "" },
-                  { value: "±0.01", label: "Tolerancia (mm)", unit: "" },
-                  { value: "DIN", label: "ISO · ANSI · B92.1", unit: "" },
-                  { value: "24h", label: "Respuesta Técnica", unit: "" },
-                ].map((stat, i) => (
-                  <div key={i} className="flex flex-col items-center justify-center py-6 px-4 bg-slate-900/60 backdrop-blur-md hover:bg-slate-900/80 transition-colors duration-300">
-                    <span className="text-2xl md:text-3xl font-black text-white tracking-tight leading-none mb-1">{stat.value}</span>
-                    <span className="text-[10px] md:text-xs text-slate-400 font-semibold tracking-wider uppercase text-center leading-tight">{stat.label}</span>
+              {/* COLUMNA DERECHA: Engranajes animados */}
+              <div className="hidden lg:flex justify-center items-center">
+                <div className="w-full max-w-md bg-slate-950/60 border border-white/5 hover:border-sky-500/15 rounded-2xl p-8 shadow-2xl backdrop-blur-md transition-all duration-500">
+                  <div className="flex justify-between items-center mb-4">
+                    <span className="text-xs font-bold tracking-widest text-slate-400 uppercase">Sistema de Transmisión</span>
+                    <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/40 border border-emerald-500/20 px-2.5 py-1 rounded-full uppercase tracking-wider">● En Operación</span>
                   </div>
-                ))}
+
+                  <div className="relative aspect-[5/3.2] bg-slate-900/50 rounded-xl overflow-hidden border border-white/5 flex items-center justify-center">
+                    <svg className="w-full h-full max-h-64" viewBox="0 0 240 140">
+                      <defs>
+                        <filter id="gs" x="-20%" y="-20%" width="140%" height="140%">
+                          <feDropShadow dx="0" dy="3" stdDeviation="3" floodColor="#000" floodOpacity="0.6"/>
+                        </filter>
+                        <radialGradient id="gg" cx="35%" cy="30%" r="65%">
+                          <stop offset="0%" stopColor="#fef9c3"/>
+                          <stop offset="40%" stopColor="#d97706"/>
+                          <stop offset="85%" stopColor="#92400e"/>
+                          <stop offset="100%" stopColor="#451a03"/>
+                        </radialGradient>
+                        <radialGradient id="gc" cx="35%" cy="30%" r="65%">
+                          <stop offset="0%" stopColor="#fed7aa"/>
+                          <stop offset="40%" stopColor="#c2410c"/>
+                          <stop offset="85%" stopColor="#7c2d12"/>
+                          <stop offset="100%" stopColor="#431407"/>
+                        </radialGradient>
+                        <radialGradient id="gst" cx="35%" cy="30%" r="65%">
+                          <stop offset="0%" stopColor="#f1f5f9"/>
+                          <stop offset="40%" stopColor="#94a3b8"/>
+                          <stop offset="85%" stopColor="#334155"/>
+                          <stop offset="100%" stopColor="#0f172a"/>
+                        </radialGradient>
+                        {/* Líneas de velocidad */}
+                        <linearGradient id="speedLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#38bdf8" stopOpacity="0"/>
+                          <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.6"/>
+                          <stop offset="100%" stopColor="#38bdf8" stopOpacity="0"/>
+                        </linearGradient>
+                      </defs>
+
+                      {/* Línea de transmisión de fuerza */}
+                      <line x1="60" y1="70" x2="180" y2="70" stroke="url(#speedLine)" strokeWidth="1" strokeDasharray="4 4">
+                        <animate attributeName="stroke-dashoffset" values="0;-16" dur="0.8s" repeatCount="indefinite"/>
+                      </line>
+
+                      {/* Engranaje conductor GRANDE - Bronce */}
+                      <g style={{ transformOrigin: "62px 70px", animation: `spin-clockwise ${8 / 1.0}s linear infinite` }}>
+                        {[0,20,40,60,80,100,120,140,160,180,200,220,240,260,280,300,320,340].map((deg, i) => (
+                          <rect key={i} x="58" y="34" width="8" height="13" rx="2"
+                            fill="url(#gg)" filter="url(#gs)"
+                            transform={`rotate(${deg} 62 70)`}/>
+                        ))}
+                        <circle cx="62" cy="70" r="30" fill="url(#gg)" filter="url(#gs)"/>
+                        <circle cx="62" cy="70" r="22" fill="#78350f" opacity="0.4"/>
+                        <circle cx="62" cy="70" r="10" fill="#1e293b" stroke="#d97706" strokeWidth="2"/>
+                        <line x1="62" y1="60" x2="62" y2="80" stroke="#d97706" strokeWidth="1.5" opacity="0.6"/>
+                        <line x1="52" y1="70" x2="72" y2="70" stroke="#d97706" strokeWidth="1.5" opacity="0.6"/>
+                        <circle cx="62" cy="70" r="3" fill="#f59e0b"/>
+                      </g>
+
+                      {/* Engranaje intermedio MEDIANO - Cobre */}
+                      <g style={{ transformOrigin: "122px 70px", animation: `spin-counterclockwise ${8 / 1.6}s linear infinite` }}>
+                        {[0,24,48,72,96,120,144,168,192,216,240,264,288,312,336].map((deg, i) => (
+                          <rect key={i} x="118" y="49" width="7" height="11" rx="1.5"
+                            fill="url(#gc)" filter="url(#gs)"
+                            transform={`rotate(${deg} 122 70)`}/>
+                        ))}
+                        <circle cx="122" cy="70" r="20" fill="url(#gc)" filter="url(#gs)"/>
+                        <circle cx="122" cy="70" r="14" fill="#7c2d12" opacity="0.4"/>
+                        <circle cx="122" cy="70" r="7" fill="#1e293b" stroke="#c2410c" strokeWidth="1.5"/>
+                        <circle cx="122" cy="70" r="2.5" fill="#fb923c"/>
+                      </g>
+
+                      {/* Engranaje conducido PEQUEÑO - Acero */}
+                      <g style={{ transformOrigin: "170px 70px", animation: `spin-clockwise ${8 / 2.7}s linear infinite` }}>
+                        {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg, i) => (
+                          <rect key={i} x="167" y="56" width="6" height="9" rx="1.5"
+                            fill="url(#gst)" filter="url(#gs)"
+                            transform={`rotate(${deg} 170 70)`}/>
+                        ))}
+                        <circle cx="170" cy="70" r="13" fill="url(#gst)" filter="url(#gs)"/>
+                        <circle cx="170" cy="70" r="8" fill="#1e293b" opacity="0.5"/>
+                        <circle cx="170" cy="70" r="5" fill="#1e293b" stroke="#64748b" strokeWidth="1"/>
+                        <circle cx="170" cy="70" r="2" fill="#94a3b8"/>
+                      </g>
+
+                      {/* Etiquetas técnicas */}
+                      <g>
+                        <rect x="32" y="108" width="60" height="16" rx="3" fill="#0f172a" stroke="#d97706" strokeWidth="0.75"/>
+                        <text x="62" y="119" fill="#fbbf24" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">CONDUCTOR · Z=18</text>
+                      </g>
+                      <g>
+                        <rect x="95" y="14" width="54" height="16" rx="3" fill="#0f172a" stroke="#c2410c" strokeWidth="0.75"/>
+                        <text x="122" y="25" fill="#fb923c" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">INTER. · Z=12</text>
+                      </g>
+                      <g>
+                        <rect x="143" y="108" width="54" height="16" rx="3" fill="#0f172a" stroke="#475569" strokeWidth="0.75"/>
+                        <text x="170" y="119" fill="#94a3b8" fontSize="6.5" fontWeight="700" textAnchor="middle" letterSpacing="0.5">SALIDA · Z=8</text>
+                      </g>
+                    </svg>
+                  </div>
+
+                  {/* Info técnica debajo de los engranajes */}
+                  <div className="grid grid-cols-3 gap-3 mt-5 text-center">
+                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
+                      <div className="text-sky-400 text-xs font-black mb-0.5">2.25×</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Relación Total</div>
+                    </div>
+                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
+                      <div className="text-amber-400 text-xs font-black mb-0.5">Módulo 2</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Normalizado</div>
+                    </div>
+                    <div className="bg-slate-900/60 border border-white/5 rounded-lg p-3">
+                      <div className="text-emerald-400 text-xs font-black mb-0.5">DIN 867</div>
+                      <div className="text-[9px] text-slate-500 uppercase tracking-wider font-semibold">Norma</div>
+                    </div>
+                  </div>
+                </div>
               </div>
+
             </div>
           </section>
 
@@ -829,6 +946,25 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      {/* ==========================================
+         BOTÓN WHATSAPP FLOTANTE
+         ========================================== */}
+      <a
+        href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20Metal%C3%BArgica%20JOR-CIT.%20Quisiera%20consultar%20por%20un%20presupuesto."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-[1100] flex items-center gap-3 pl-4 pr-5 py-4 bg-[#25D366] hover:bg-[#1db954] text-white font-bold rounded-full shadow-2xl shadow-green-600/40 hover:shadow-green-500/60 transition-all duration-300 hover:scale-105 active:scale-95 group"
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg viewBox="0 0 24 24" fill="currentColor" className="w-7 h-7 flex-shrink-0">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        <div className="flex flex-col leading-tight">
+          <span className="text-xs font-black tracking-wide">Ing. Antezana</span>
+          <span className="text-[11px] font-semibold opacity-90">+54 9 11 6249-3103</span>
+        </div>
+      </a>
 
     </div>
   );
