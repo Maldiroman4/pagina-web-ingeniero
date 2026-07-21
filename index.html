@@ -1,0 +1,2623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Metalúrgica JOR-CIT - Desde 1982 dedicados a la fabricación y fresado de engranajes y piezas industriales de alta precisión.">
+  <title>Metalúrgica JOR-CIT | Fabricación y Fresado de Engranajes</title>
+  
+  <!-- Google Fonts: Montserrat (Sans-serif) & Lora (Serif for brand name) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. VARIABLES Y DISEÑO DEL TEMA (CSS CUSTOM PROPERTIES)
+       ========================================================================== */
+    :root {
+      --bg-dark: #0a0a0a;
+      --bg-dark-card: #121212;
+      --bg-dark-input: #1a1a1a;
+      --bg-light: #f9f9f9;
+      --bg-light-card: #ffffff;
+      --accent-teal: #6ca0b0;
+      --accent-teal-hover: #588d9d;
+      --accent-teal-alpha: rgba(108, 160, 176, 0.1);
+      --accent-blue: #2a75d3;
+      --accent-blue-hover: #1e60b8;
+      --text-light: #ffffff;
+      --text-light-muted: #b3b3b3;
+      --text-dark: #222222;
+      --text-dark-muted: #666666;
+      --transition-smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      --font-brand: 'Lora', serif;
+      --font-body: 'Montserrat', sans-serif;
+      --header-height: 80px;
+    }
+
+    /* ==========================================================================
+       2. RESET Y ESTILOS BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: var(--font-body);
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition-smooth);
+    }
+
+    button, input, textarea {
+      font-family: inherit;
+      font-size: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Contenedor centralizado */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Secciones generales */
+    .section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    /* ==========================================================================
+       3. NAVEGACIÓN Y HEADER (STICKY Y GLASSMORPHISM)
+       ========================================================================== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--header-height);
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      z-index: 1000;
+      transition: var(--transition-smooth);
+    }
+
+    header.scrolled {
+      height: 70px;
+      background-color: rgba(5, 5, 5, 0.95);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .brand-logo {
+      font-family: var(--font-brand);
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: var(--text-light);
+      white-space: nowrap;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-logo span {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Menú de navegación Desktop */
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+
+    .nav-link {
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-light-muted);
+      cursor: pointer;
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-light);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-teal);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Barra de Búsqueda Integrada */
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-btn {
+      background: none;
+      border: none;
+      color: var(--text-light-muted);
+      cursor: pointer;
+      padding: 0.4rem;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .search-btn:hover {
+      color: var(--accent-teal);
+      transform: scale(1.15);
+    }
+
+    .search-input-inline {
+      width: 0;
+      opacity: 0;
+      border: none;
+      outline: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--text-light);
+      padding: 0.4rem 0;
+      border-radius: 4px;
+      transition: var(--transition-smooth);
+      font-size: 0.85rem;
+    }
+
+    .search-input-inline.open {
+      width: 180px;
+      opacity: 1;
+      padding: 0.4rem 0.8rem;
+      margin-left: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    /* Menú Hamburguesa Mobile */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      cursor: pointer;
+      padding: 0.5rem;
+      z-index: 1001;
+    }
+
+    .mobile-menu-toggle svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+
+    /* Menú Mobile Drawer */
+    .mobile-nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background-color: rgba(10, 10, 10, 0.98);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2.5rem;
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition-smooth);
+    }
+
+    .mobile-nav.open {
+      right: 0;
+    }
+
+    .mobile-nav .nav-link {
+      font-size: 1.2rem;
+    }
+
+    /* Backdrop para el menú móvil */
+    .menu-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-backdrop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ==========================================================================
+       4. SECCIÓN HERO (BANNER DE INICIO)
+       ========================================================================== */
+    .hero-section {
+      padding-top: var(--header-height);
+      position: relative;
+      overflow: hidden;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Contenedor de la Imagen Hero con efecto parallax/parallax-like */
+    .hero-image-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.35) contrast(1.1) grayscale(30%);
+      transform: scale(1.02);
+      transition: transform 8s ease;
+    }
+
+    .hero-section:hover .hero-image {
+      transform: scale(1.08);
+    }
+
+    /* Degradado superpuesto para fundirse con el fondo negro inferior */
+    .hero-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(to bottom, transparent, var(--bg-dark));
+      z-index: 2;
+    }
+
+    /* Bloque de Texto Centrado de la Hero Section */
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 4rem 1.5rem;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.8;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards 0.2s;
+    }
+
+    .hero-desc:last-child {
+      margin-bottom: 0;
+      animation-delay: 0.5s;
+    }
+
+    /* ==========================================================================
+       5. SECCIÓN CAPACIDADES / CAPÍTULOS
+       ========================================================================== */
+    .capacidades-section {
+      background-color: var(--bg-dark);
+      padding: 4rem 0 6rem 0;
+    }
+
+    .capacidades-title {
+      text-align: center;
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 4rem;
+      color: var(--text-light);
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .capacidades-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3.5rem 3rem;
+    }
+
+    .capacidad-item {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: var(--transition-smooth);
+    }
+
+    .capacidad-icon-wrapper {
+      width: 70px;
+      height: 70px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+      position: relative;
+    }
+
+    .capacidad-icon-wrapper::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid var(--accent-teal);
+      opacity: 0;
+      transform: scale(0.8);
+      transition: var(--transition-smooth);
+    }
+
+    .capacidad-item:hover .capacidad-icon-wrapper {
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 20px rgba(108, 160, 176, 0.4);
+    }
+
+    .capacidad-item:hover .capacidad-icon-wrapper::before {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    .capacidad-icon-wrapper svg {
+      width: 30px;
+      height: 30px;
+      fill: var(--text-light);
+      transition: transform 0.8s ease;
+    }
+
+    .capacidad-item:hover .capacidad-icon-wrapper svg {
+      transform: rotate(180deg);
+      fill: var(--accent-teal);
+    }
+
+    .capacidad-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+      color: var(--text-light-muted);
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+    }
+
+    .capacidad-item:hover .capacidad-text {
+      color: var(--text-light);
+    }
+
+    /* ==========================================================================
+       6. SECCIÓN PRODUCTOS DESTACADOS
+       ========================================================================== */
+    .productos-section {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      padding: 6rem 0;
+    }
+
+    .section-title-dark {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4rem;
+      position: relative;
+      color: var(--text-dark);
+    }
+
+    .section-title-dark::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent-teal);
+      border-radius: 2px;
+    }
+
+    .productos-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .producto-card {
+      background-color: var(--bg-light-card);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .producto-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      border-color: rgba(108, 160, 176, 0.3);
+    }
+
+    .producto-card-header {
+      padding: 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background-color: var(--bg-light-card);
+      z-index: 2;
+    }
+
+    .producto-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-dark);
+      transition: var(--transition-smooth);
+    }
+
+    .producto-card:hover .producto-card-title {
+      color: var(--accent-teal);
+    }
+
+    .producto-image-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background-color: #e0e0e0;
+    }
+
+    .producto-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease, filter 0.3s ease;
+    }
+
+    .producto-card:hover .producto-image {
+      transform: scale(1.06);
+    }
+
+    /* Botón Ver Galería */
+    .btn-center-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      padding: 1rem 2.2rem;
+      background-color: var(--accent-teal);
+      color: var(--text-light);
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(108, 160, 176, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-action:hover {
+      background-color: var(--accent-teal-hover);
+      box-shadow: 0 6px 20px rgba(88, 141, 157, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn-action:active {
+      transform: translateY(1px);
+    }
+
+    .btn-action svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       7. SECCIÓN VISTA DE GALERÍA (INICIALMENTE OCULTA)
+       ========================================================================== */
+    .gallery-view-section {
+      background-color: var(--bg-dark);
+      padding: calc(var(--header-height) + 3rem) 0 6rem 0;
+      min-height: 100vh;
+    }
+
+    .gallery-view-section.hidden {
+      display: none;
+    }
+
+    .gallery-title-wrapper {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .gallery-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .gallery-title::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent-teal);
+      border-radius: 2px;
+    }
+
+    /* Filtros de la Galería */
+    .gallery-filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .filter-tab {
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-light-muted);
+      padding: 0.6rem 1.5rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-tab:hover, .filter-tab.active {
+      background-color: var(--accent-teal);
+      color: var(--text-light);
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 15px rgba(108, 160, 176, 0.3);
+    }
+
+    /* Grid Fluido de Galería */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    /* Soporta 5 columnas en pantallas ultra-anchas */
+    @media (min-width: 1400px) {
+      .gallery-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+
+    .gallery-card {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+      cursor: pointer;
+      background-color: var(--bg-dark-card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-card:hover {
+      border-color: var(--accent-teal);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .gallery-card:hover .gallery-img {
+      transform: scale(1.08);
+    }
+
+    /* Overlay al hacer hover en la galería */
+    .gallery-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, rgba(108, 160, 176, 0.4) 100%);
+      opacity: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+      transition: var(--transition-smooth);
+      z-index: 2;
+    }
+
+    .gallery-card:hover .gallery-card-overlay {
+      opacity: 1;
+    }
+
+    .gallery-card-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent-teal);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.3rem;
+    }
+
+    .gallery-card-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-light);
+    }
+
+    .gallery-zoom-icon {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: var(--transition-smooth);
+    }
+
+    .gallery-card:hover .gallery-zoom-icon {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-zoom-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+    }
+
+    /* ==========================================================================
+       8. SECCIÓN VIDEOS (Home)
+       ========================================================================== */
+    .videos-section {
+      background-color: var(--bg-dark);
+      padding: 6rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .section-title-light {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4rem;
+      position: relative;
+      color: var(--text-light);
+    }
+
+    .section-title-light::after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent-teal);
+      border-radius: 2px;
+    }
+
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.2rem;
+    }
+
+    .video-card {
+      background-color: var(--bg-dark-card);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent-teal);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+
+    .video-thumbnail-wrapper {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.75;
+      transition: transform 0.6s ease, opacity 0.3s ease;
+    }
+
+    .video-card:hover .video-thumbnail {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    .video-play-btn {
+      width: 55px;
+      height: 55px;
+      background-color: var(--accent-teal);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      box-shadow: 0 4px 15px rgba(108, 160, 176, 0.4);
+      transition: var(--transition-smooth);
+    }
+
+    .video-play-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      margin-left: 3px; /* Corrección óptica de centrado de flecha */
+    }
+
+    .video-card:hover .video-play-btn {
+      transform: scale(1.15);
+      background-color: var(--accent-teal-hover);
+      box-shadow: 0 0 25px rgba(108, 160, 176, 0.6);
+    }
+
+    .video-info {
+      padding: 1.5rem;
+    }
+
+    .video-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.4;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+    }
+
+    .video-duration {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent-teal);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       9. SECCIÓN CONTACTO (Home)
+       ========================================================================== */
+    .contacto-section {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      padding: 6rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .contacto-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* Columna Información */
+    .contacto-info-card {
+      background-color: var(--bg-light-card);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .contacto-info-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-dark);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .contacto-info-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-teal);
+    }
+
+    .contacto-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .contacto-info-item {
+      display: flex;
+      gap: 1.2rem;
+    }
+
+    .contacto-info-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--accent-teal-alpha);
+      color: var(--accent-teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .contacto-info-item:hover .contacto-info-icon {
+      background-color: var(--accent-teal);
+      color: var(--text-light);
+      transform: scale(1.08);
+    }
+
+    .contacto-info-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .contacto-info-content h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.3rem;
+      color: var(--text-dark);
+    }
+
+    .contacto-info-content p {
+      font-size: 0.9rem;
+      color: var(--text-dark-muted);
+      font-weight: 500;
+    }
+
+    /* Columna Formulario */
+    .contacto-form-card {
+      background-color: var(--bg-light-card);
+      border-radius: 8px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 4px;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: var(--transition-smooth);
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-teal);
+      background-color: var(--bg-light-card);
+      box-shadow: 0 0 10px rgba(108, 160, 176, 0.15);
+    }
+
+    textarea.form-input {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background-color: var(--accent-teal);
+      color: var(--text-light);
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      box-shadow: 0 4px 15px rgba(108, 160, 176, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .form-submit-btn:hover {
+      background-color: var(--accent-teal-hover);
+      box-shadow: 0 6px 20px rgba(88, 141, 157, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .form-submit-btn svg {
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      transition: transform 0.3s ease;
+    }
+
+    .form-submit-btn:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Estado de Éxito en Envío Formulario */
+    .form-success-msg {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 0;
+      animation: fadeIn 0.5s ease forwards;
+    }
+
+    .form-success-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: rgba(42, 117, 211, 0.1);
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .form-success-icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+    }
+
+    .form-success-msg h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success-msg p {
+      font-size: 0.9rem;
+      color: var(--text-dark-muted);
+      max-width: 300px;
+    }
+
+    /* ==========================================================================
+       10. FOOTER / CONTACTO BANNER (CON MUESCA TRIANGULAR)
+       ========================================================================== */
+    footer {
+      background-color: var(--bg-dark);
+      position: relative;
+      margin-top: auto;
+      z-index: 5;
+    }
+
+    /* Banner Azul footer con muesca triangular superior */
+    .footer-banner {
+      position: relative;
+      background-color: var(--accent-blue);
+      color: var(--text-light);
+      padding: 4rem 1.5rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Muesca triangular apuntando hacia abajo en el centro del footer */
+    .footer-banner::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, 0);
+      border-left: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top: 20px solid var(--bg-light); /* Empata con el color claro del contacto */
+      width: 0;
+      height: 0;
+      z-index: 5;
+      pointer-events: none;
+      transition: border-top-color 0.3s;
+    }
+
+    /* Si estamos en la vista de galería, la sección anterior es oscura, la muesca debe ser negra */
+    body.in-gallery .footer-banner::before {
+      border-top-color: var(--bg-dark);
+    }
+
+    .footer-banner-content {
+      width: 100%;
+      max-width: 1200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .footer-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* Botón Volver Arriba */
+    .back-to-top-btn {
+      position: absolute;
+      right: 0;
+      width: 44px;
+      height: 44px;
+      background-color: rgba(10, 10, 10, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .back-to-top-btn:hover {
+      background-color: var(--bg-dark);
+      border-color: var(--text-light);
+      transform: translateY(-3px);
+    }
+
+    .back-to-top-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+
+    /* Sub-footer con créditos corporativos */
+    .footer-bottom {
+      background-color: var(--bg-dark);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 2rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-copy {
+      font-size: 0.8rem;
+      color: var(--text-light-muted);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* ==========================================================================
+       11. COMPONENTES INTERACTIVOS: LIGHTBOX MODAL DE GALERÍA
+       ========================================================================== */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(5, 5, 5, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content-wrapper {
+      position: relative;
+      width: 90%;
+      max-width: 900px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transform: scale(0.95);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .lightbox.active .lightbox-img {
+      transform: scale(1);
+    }
+
+    .lightbox-caption {
+      margin-top: 1.5rem;
+      color: var(--text-light);
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+
+    .lightbox-close-btn {
+      position: absolute;
+      top: -3.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--text-light-muted);
+      cursor: pointer;
+      font-size: 2rem;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-close-btn:hover {
+      color: var(--text-light);
+      transform: scale(1.1);
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--text-light);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      z-index: 10;
+    }
+
+    .lightbox-nav-btn:hover {
+      background-color: var(--accent-teal);
+      border-color: var(--accent-teal);
+      box-shadow: 0 0 15px rgba(108, 160, 176, 0.4);
+    }
+
+    .lightbox-nav-prev {
+      left: -4rem;
+    }
+
+    .lightbox-nav-next {
+      right: -4rem;
+    }
+
+    .lightbox-nav-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* ==========================================================================
+       12. COMPONENTES INTERACTIVOS: VIDEO MODAL
+       ========================================================================== */
+    .video-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(5, 5, 5, 0.98);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+
+    .video-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .video-modal-container {
+      position: relative;
+      width: 90%;
+      max-width: 850px;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .video-modal-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-modal-close-btn {
+      position: absolute;
+      top: -3.5rem;
+      right: 0;
+      background: none;
+      border: none;
+      color: var(--text-light-muted);
+      cursor: pointer;
+      font-size: 2rem;
+      transition: var(--transition-smooth);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .video-modal-close-btn:hover {
+      color: var(--text-light);
+      transform: scale(1.1);
+    }
+
+    /* ==========================================================================
+       13. EFECTOS DE DISEÑO PREMIUM (REVEAL ON SCROLL Y ANIMACIONES)
+       ========================================================================== */
+    /* Efecto Fade In Up al scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                  transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Retardos en secuencia */
+    .reveal-d1 { transition-delay: 0.15s; }
+    .reveal-d2 { transition-delay: 0.3s; }
+    .reveal-d3 { transition-delay: 0.45s; }
+    .reveal-d4 { transition-delay: 0.6s; }
+
+    /* Animación del Hero loader */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* Utility classes */
+    .hidden {
+      display: none !important;
+    }
+
+    /* ==========================================================================
+       14. CONSULTAS DE MEDIOS (RESPONSIVE LAYOUTS)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .productos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .videos-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .contacto-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --header-height: 70px;
+      }
+      header.scrolled {
+        height: 60px;
+      }
+      .brand-logo {
+        font-size: 1.35rem;
+      }
+      .nav-menu {
+        display: none;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .hero-content {
+        padding: 2.5rem 1rem;
+      }
+      .hero-desc {
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+      .capacidades-title {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+      }
+      .capacidades-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .capacidad-icon-wrapper {
+        width: 60px;
+        height: 60px;
+      }
+      .capacidad-icon-wrapper svg {
+        width: 24px;
+        height: 24px;
+      }
+      .section-title-dark, .section-title-light, .gallery-title {
+        font-size: 1.75rem;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+      .contacto-info-card, .contacto-form-card {
+        padding: 1.8rem;
+      }
+      .lightbox-nav-btn {
+        width: 40px;
+        height: 40px;
+      }
+      .lightbox-nav-prev {
+        left: 0.5rem;
+      }
+      .lightbox-nav-next {
+        right: 0.5rem;
+      }
+      .lightbox-close-btn, .video-modal-close-btn {
+        top: -3rem;
+        right: 0.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .productos-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .filter-tab {
+        padding: 0.5rem 1rem;
+        font-size: 0.78rem;
+      }
+      .footer-title {
+        font-size: 1.25rem;
+        letter-spacing: 2px;
+      }
+      .back-to-top-btn {
+        position: relative;
+        right: auto;
+        margin-top: 1rem;
+      }
+      .footer-banner-content {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       HEADER Y NAVEGACIÓN
+       ========================================================================== -->
+  <header id="header">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo route-home">
+        <span>Metalúrgica JOR-CIT</span>
+      </a>
+
+      <!-- Menú Desktop -->
+      <nav class="nav-menu">
+        <a class="nav-link active route-home" data-anchor="hero">Home</a>
+        <a class="nav-link route-gallery" id="nav-gallery-link">Galería</a>
+        <a class="nav-link route-home" data-anchor="videos">Videos</a>
+        <a class="nav-link route-home" data-anchor="contacto">Contacto</a>
+        
+        <!-- Buscador integrado -->
+        <div class="search-wrapper">
+          <button class="search-btn" id="search-toggle-btn" aria-label="Abrir buscador">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+          <input type="text" class="search-input-inline" id="search-input" placeholder="Buscar productos...">
+        </div>
+      </nav>
+
+      <!-- Botón Hamburguesa Mobile -->
+      <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Menu principal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12" id="line-mid"></line>
+          <line x1="3" y1="6" x2="21" y2="6" id="line-top"></line>
+          <line x1="3" y1="18" x2="21" y2="18" id="line-bot"></line>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Menú Drawer Mobile -->
+  <nav class="mobile-nav" id="mobile-menu">
+    <a class="nav-link route-home" data-anchor="hero">Home</a>
+    <a class="nav-link route-gallery">Galería</a>
+    <a class="nav-link route-home" data-anchor="videos">Videos</a>
+    <a class="nav-link route-home" data-anchor="contacto">Contacto</a>
+  </nav>
+  <div class="menu-backdrop" id="menu-backdrop"></div>
+
+  <!-- ==========================================================================
+       VISTA PRINCIPAL (HOME)
+       ========================================================================== -->
+  <div id="home-view">
+    
+    <!-- Hero Banner -->
+    <section id="hero" class="hero-section">
+      <div class="hero-image-container">
+        <!-- Imagen de engranajes metalúrgicos de alta calidad simulada en gris oscuro -->
+        <img src="img/hero_gears.png" 
+             alt="Maquinaria Metalúrgica Engranajes" 
+             class="hero-image">
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="hero-desc">
+          Desde el año 1982 nos dedicamos a la fabricación y fresado de engranajes.
+        </p>
+        <p class="hero-desc">
+          Contamos para ello con varias máquinas creadoras y talladoras de distintas capacidades de trabajo, lo que nos permite dar una amplia respuesta a nuestros clientes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Capacidades / Grid 2x2 -->
+    <section id="capacidades" class="capacidades-section">
+      <div class="container">
+        <h2 class="capacidades-title reveal">FABRICAMOS PIEZAS UNITARIAS, O BIEN SERIES DE:</h2>
+        
+        <div class="capacidades-grid">
+          
+          <div class="capacidad-item reveal reveal-d1">
+            <div class="capacidad-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+              </svg>
+            </div>
+            <p class="capacidad-text">
+              ENGRANAJES RECTOS, HELICOIDALES, INTERIORES, SINFINES Y CORONAS, CREMALLERAS, TANTO EN MÓDULO COMO EN DP
+            </p>
+          </div>
+
+          <div class="capacidad-item reveal reveal-d2">
+            <div class="capacidad-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+              </svg>
+            </div>
+            <p class="capacidad-text">
+              POLEAS DENTADAS SINCRÓNICAS, TRAPEZOIDALES Y REDONDAS TIPO HTD
+            </p>
+          </div>
+
+          <div class="capacidad-item reveal reveal-d3">
+            <div class="capacidad-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+              </svg>
+            </div>
+            <p class="capacidad-text">
+              ESTRIADOS DIN 5480, DIN 5482, UNI 221, ANSI B92.1-1970 (DP STUB)
+            </p>
+          </div>
+
+          <div class="capacidad-item reveal reveal-d4">
+            <div class="capacidad-icon-wrapper">
+              <svg viewBox="0 0 24 24">
+                <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"/>
+              </svg>
+            </div>
+            <p class="capacidad-text">
+              ENGRANAJES DE CADENA ASA Y B.S.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Productos Destacados -->
+    <section id="productos" class="productos-section">
+      <div class="container">
+        <h2 class="section-title-dark reveal">PRODUCTOS</h2>
+        
+        <div class="productos-grid">
+          
+          <!-- Card 1 -->
+          <div class="producto-card reveal reveal-d1" data-search="coronas helicoidales engranaje helicoidal">
+            <div class="producto-card-header">
+              <h3 class="producto-card-title">CORONAS HELICOIDALES</h3>
+            </div>
+            <div class="producto-image-wrapper">
+              <img src="img/prod_corona.png" 
+                   alt="Coronas Helicoidales" 
+                   class="producto-image">
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="producto-card reveal reveal-d2" data-search="sector dentado engranajes piezas">
+            <div class="producto-card-header">
+              <h3 class="producto-card-title">SECTOR DENTADO</h3>
+            </div>
+            <div class="producto-image-wrapper">
+              <img src="img/prod_sector.png" 
+                   alt="Sector Dentado" 
+                   class="producto-image">
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="producto-card reveal reveal-d3" data-search="repuestos agricolas mecanizados">
+            <div class="producto-card-header">
+              <h3 class="producto-card-title">REPUESTOS AGRÍCOLAS</h3>
+            </div>
+            <div class="producto-image-wrapper">
+              <img src="img/prod_repuestos.png" 
+                   alt="Repuestos Agrícolas" 
+                   class="producto-image">
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="producto-card reveal reveal-d4" data-search="reductor epicicloidal caja reductora">
+            <div class="producto-card-header">
+              <h3 class="producto-card-title">REDUCTOR EPICICLOIDAL</h3>
+            </div>
+            <div class="producto-image-wrapper">
+              <img src="img/prod_reductor.png" 
+                   alt="Reductor Epicicloidal" 
+                   class="producto-image">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="btn-center-wrapper reveal">
+          <button class="btn-action route-gallery" id="view-gallery-btn">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 5h-9.586L8.414 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"/>
+            </svg>
+            VER GALERÍA
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos de Maquinaria -->
+    <section id="videos" class="videos-section">
+      <div class="container">
+        <h2 class="section-title-light reveal">DEMOSTRACIONES EN VIDEO</h2>
+        
+        <div class="videos-grid">
+          
+          <!-- Video Card 1 -->
+          <div class="video-card reveal reveal-d1" data-video-src="https://www.youtube.com/embed/8_F8EszG184">
+            <div class="video-thumbnail-wrapper">
+              <img src="img/video_cover1.png" alt="Talladora de Engranajes" class="video-thumbnail">
+              <div class="video-play-overlay">
+                <div class="video-play-btn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Tallado de Engranajes Rectos en Creadora</h3>
+              <span class="video-duration">Ver Video</span>
+            </div>
+          </div>
+
+          <!-- Video Card 2 -->
+          <div class="video-card reveal reveal-d2" data-video-src="https://www.youtube.com/embed/c-Z788H83w4">
+            <div class="video-thumbnail-wrapper">
+              <img src="img/video_cover2.png" alt="Fresado de Coronas" class="video-thumbnail">
+              <div class="video-play-overlay">
+                <div class="video-play-btn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Fresado de Corona Helicoidal de Gran Diámetro</h3>
+              <span class="video-duration">Ver Video</span>
+            </div>
+          </div>
+
+          <!-- Video Card 3 -->
+          <div class="video-card reveal reveal-d3" data-video-src="https://www.youtube.com/embed/mK9k2tF0UeY">
+            <div class="video-thumbnail-wrapper">
+              <img src="img/video_cover3.png" alt="Control de Calidad" class="video-thumbnail">
+              <div class="video-play-overlay">
+                <div class="video-play-btn">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Control de Calidad y Verificación Dimensional</h3>
+              <span class="video-duration">Ver Video</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Información y Formulario de Contacto -->
+    <section id="contacto" class="contacto-section">
+      <div class="container">
+        
+        <div class="contacto-grid">
+          
+          <!-- Info Col -->
+          <div class="contacto-info-card reveal">
+            <h3 class="contacto-info-title">METALÚRGICA JOR-CIT</h3>
+            <ul class="contacto-info-list">
+              
+              <li class="contacto-info-item">
+                <div class="contacto-info-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                  </svg>
+                </div>
+                <div class="contacto-info-content">
+                  <h4>DIRECCIÓN</h4>
+                  <p>Zona Industrial Metalúrgica, Buenos Aires, Argentina</p>
+                </div>
+              </li>
+
+              <li class="contacto-info-item">
+                <div class="contacto-info-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                  </svg>
+                </div>
+                <div class="contacto-info-content">
+                  <h4>TELÉFONO</h4>
+                  <p>+54 11 4455-8899 / +54 9 11 5566-7788</p>
+                </div>
+              </li>
+
+              <li class="contacto-info-item">
+                <div class="contacto-info-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                  </svg>
+                </div>
+                <div class="contacto-info-content">
+                  <h4>CORREO ELECTRÓNICO</h4>
+                  <p>contacto@metalurgicajorcit.com.ar</p>
+                </div>
+              </li>
+
+              <li class="contacto-info-item">
+                <div class="contacto-info-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm3.3 14.3L11 12.8V7h1.5v4.9l3.8 2.2-.8 1.2z"/>
+                  </svg>
+                </div>
+                <div class="contacto-info-content">
+                  <h4>HORARIO DE ATENCIÓN</h4>
+                  <p>Lunes a Viernes: 8:00 hs a 17:00 hs</p>
+                </div>
+              </li>
+
+            </ul>
+          </div>
+
+          <!-- Form Col -->
+          <div class="contacto-form-card reveal reveal-d1">
+            <form id="contact-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="name" class="form-label">Nombre Completo</label>
+                <input type="text" id="name" class="form-input" required placeholder="Ej: Juan Pérez">
+              </div>
+              <div class="form-group">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" id="email" class="form-input" required placeholder="Ej: juan@empresa.com">
+              </div>
+              <div class="form-group">
+                <label for="subject" class="form-label">Asunto</label>
+                <input type="text" id="subject" class="form-input" required placeholder="Ej: Cotización de Engranajes Helicos">
+              </div>
+              <div class="form-group">
+                <label for="message" class="form-label">Mensaje</label>
+                <textarea id="message" class="form-input" required placeholder="Detalle las medidas, módulo o DP de las piezas a cotizar..."></textarea>
+              </div>
+              <button type="submit" class="form-submit-btn">
+                <span>ENVIAR MENSAJE</span>
+                <svg viewBox="0 0 24 24">
+                  <line x1="22" y1="2" x2="11" y2="13"></line>
+                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+              </button>
+            </form>
+            
+            <div class="form-success-msg" id="form-success">
+              <div class="form-success-icon">
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                  <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3>¡Mensaje Enviado!</h3>
+              <p>Su consulta ha sido procesada con éxito. Un asesor de Metalúrgica JOR-CIT se pondrá en contacto a la brevedad.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ==========================================================================
+       VISTA DE GALERÍA (TRABAJOS Y PRODUCTOS)
+       ========================================================================== */ -->
+  <div id="gallery-view" class="gallery-view-section hidden">
+    <div class="container">
+      
+      <div class="gallery-title-wrapper">
+        <h2 class="gallery-title">TRABAJOS / PRODUCTOS</h2>
+      </div>
+
+      <!-- Filtros interactivos -->
+      <div class="gallery-filters">
+        <button class="filter-tab active" data-filter="all">TODOS</button>
+        <button class="filter-tab" data-filter="engranajes">ENGRANAJES</button>
+        <button class="filter-tab" data-filter="poleas">POLEAS</button>
+        <button class="filter-tab" data-filter="estriados">ESTRIADOS</button>
+        <button class="filter-tab" data-filter="repuestos">REPUESTOS</button>
+      </div>
+
+      <!-- Grid de Galería -->
+      <div class="gallery-grid" id="gallery-grid">
+        
+        <!-- Elemento 1 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Engranaje Recto Fresado" data-desc="Tallado de engranaje recto en acero especial con módulo de gran capacidad.">
+          <img src="img/gal_recto.png" alt="Engranaje Recto" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Engranaje Recto Fresado</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 2 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Corona Helicoidal de Bronce" data-desc="Corona helicoidal tallada a medida para reductor industrial pesado.">
+          <img src="img/gal_bronze.png" alt="Corona Helicoidal" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Corona Helicoidal</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 3 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Engranajes Interiores" data-desc="Tallado interior de alta precisión para coronas de rotación y embragues.">
+          <img src="img/gal_interior.png" alt="Engranaje Interior" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Engranajes Interiores</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 4 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Sinfín y Corona Acoplados" data-desc="Juego de tornillo sinfín y corona tallados con ajuste perfecto para transmisiones.">
+          <img src="img/gal_sinfin.png" alt="Sinfín y Corona" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Sinfín y Corona</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 5 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Cremalleras Modulares" data-desc="Tallado de cremalleras de precisión en diversos materiales y longitudes.">
+          <img src="img/gal_cremallera.png" alt="Cremalleras" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Cremalleras</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 6 (Poleas) -->
+        <div class="gallery-card" data-category="poleas" data-name="Poleas Dentadas Sincrónicas" data-desc="Poleas sincrónicas trapezoidales y de tipo redondo HTD en aluminio y acero.">
+          <img src="img/gal_polea.png" alt="Poleas Sincrónicas" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Poleas</span>
+            <h4 class="gallery-card-name">Poleas Sincrónicas</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 7 (Estriados) -->
+        <div class="gallery-card" data-category="estriados" data-name="Ejes Estriados Normados" data-desc="Estriados de precisión según normas DIN 5480, DIN 5482 y ANSI B92.1.">
+          <img src="img/gal_estriado.png" alt="Ejes Estriados" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Estriados</span>
+            <h4 class="gallery-card-name">Ejes Estriados</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 8 (Engranajes) -->
+        <div class="gallery-card" data-category="engranajes" data-name="Engranajes de Cadena ASA" data-desc="Piñones y coronas de cadena fabricados según normas ASA y B.S. en serie o pieza única.">
+          <img src="img/gal_cadena.png" alt="Engranajes de Cadena" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Engranajes</span>
+            <h4 class="gallery-card-name">Engranajes de Cadena</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 9 (Repuestos) -->
+        <div class="gallery-card" data-category="repuestos" data-name="Repuestos Industriales CNC" data-desc="Mecanizado CNC y fresado de repuestos para maquinaria agrícola y pesada.">
+          <img src="img/gal_repuestos.png" alt="Repuestos Industriales" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Repuestos</span>
+            <h4 class="gallery-card-name">Repuestos Industriales</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Elemento 10 (Repuestos) -->
+        <div class="gallery-card" data-category="repuestos" data-name="Reductores Epicicloidales" data-desc="Montaje y tallado de engranajes satélites y planetarios para cajas de reducción.">
+          <img src="img/gal_caja.png" alt="Reductores" class="gallery-img">
+          <div class="gallery-card-overlay">
+            <span class="gallery-card-tag">Repuestos</span>
+            <h4 class="gallery-card-name">Reductores Epicicloidales</h4>
+          </div>
+          <div class="gallery-zoom-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="11" y1="8" x2="11" y2="14"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer>
+    
+    <!-- Barra Principal Azul -->
+    <div class="footer-banner" id="footer-banner-anchor">
+      <div class="footer-banner-content">
+        <h2 class="footer-title">CONTÁCTENOS</h2>
+        
+        <!-- Botón Volver Arriba -->
+        <button class="back-to-top-btn" id="scroll-top-btn" aria-label="Volver arriba">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Créditos inferiores -->
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="footer-copy">
+          &copy; <span id="current-year"></span> Metalúrgica JOR-CIT. Fabricación de Engranajes de Precisión. Todos los derechos reservados.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALES E INTERACTIVIDAD AVANZADA
+       ========================================================================== -->
+  
+  <!-- Lightbox de Galería -->
+  <div class="lightbox" id="lightbox-modal">
+    <div class="lightbox-content-wrapper">
+      <button class="lightbox-close-btn" id="lightbox-close" aria-label="Cerrar ventana">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      
+      <button class="lightbox-nav-btn lightbox-nav-prev" id="lightbox-prev" aria-label="Imagen anterior">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+
+      <img src="" alt="Vista ampliada" class="lightbox-img" id="lightbox-img">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+
+      <button class="lightbox-nav-btn lightbox-nav-next" id="lightbox-next" aria-label="Siguiente imagen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Modal Reproductor de Video -->
+  <div class="video-modal" id="video-modal">
+    <div class="video-modal-container">
+      <button class="video-modal-close-btn" id="video-modal-close" aria-label="Cerrar video">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <iframe src="" class="video-modal-iframe" id="video-iframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SCRIPTS DE LOGICA Y COMPORTAMIENTO (SINGLE PAGE APP)
+       ========================================================================== -->
+  <script>
+    // Configurar año dinámico del footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    /* ==========================================
+       1. MANEJO DE VISTAS (SINGLE PAGE APP)
+       ========================================== */
+    const homeView = document.getElementById('home-view');
+    const galleryView = document.getElementById('gallery-view');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const menuBackdrop = document.getElementById('menu-backdrop');
+    const header = document.getElementById('header');
+
+    // Cambiar entre vista Home y Galería
+    function navigateToView(viewName) {
+      if (viewName === 'gallery') {
+        homeView.classList.add('hidden');
+        galleryView.classList.remove('hidden');
+        document.body.classList.add('in-gallery');
+        
+        // Actualizar links de navegación
+        navLinks.forEach(link => {
+          if (link.classList.contains('route-gallery')) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      } else {
+        homeView.classList.remove('hidden');
+        galleryView.classList.add('hidden');
+        document.body.classList.remove('in-gallery');
+        
+        // Inicialmente el activo es home
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-anchor') === 'hero') {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+      }
+      
+      // Cerrar menú móvil al navegar
+      closeMobileMenu();
+      
+      // Ir arriba
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Handlers para clases de navegación
+    document.querySelectorAll('.route-home').forEach(elem => {
+      elem.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToView('home');
+        
+        // Si el elemento tiene un anchor asociado, desplazarse hasta él
+        const anchor = elem.getAttribute('data-anchor') || elem.getAttribute('href')?.substring(1);
+        if (anchor) {
+          setTimeout(() => {
+            const targetSection = document.getElementById(anchor);
+            if (targetSection) {
+              const yOffset = -80; // Compensar altura de header
+              const y = targetSection.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      });
+    });
+
+    document.querySelectorAll('.route-gallery').forEach(elem => {
+      elem.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateToView('gallery');
+      });
+    });
+
+    /* ==========================================
+       2. MENÚ MÓVIL Y CABECERA
+       ========================================== */
+    function toggleMobileMenu() {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBackdrop.classList.toggle('visible', isOpen);
+      
+      // Animar icono
+      const lineMid = document.getElementById('line-mid');
+      const lineTop = document.getElementById('line-top');
+      const lineBot = document.getElementById('line-bot');
+      
+      if (isOpen) {
+        lineMid.style.opacity = '0';
+        lineTop.style.transform = 'translateY(6px) rotate(45deg)';
+        lineBot.style.transform = 'translateY(-6px) rotate(-45deg)';
+      } else {
+        lineMid.style.opacity = '1';
+        lineTop.style.transform = 'none';
+        lineBot.style.transform = 'none';
+      }
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      menuBackdrop.classList.remove('visible');
+      document.getElementById('line-mid').style.opacity = '1';
+      document.getElementById('line-top').style.transform = 'none';
+      document.getElementById('line-bot').style.transform = 'none';
+    }
+
+    mobileToggle.addEventListener('click', toggleMobileMenu);
+    menuBackdrop.addEventListener('click', closeMobileMenu);
+
+    // Efecto shrink en header y botón "Volver arriba" al hacer scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Resaltado de sección activa en la navegación del Home
+      if (!homeView.classList.contains('hidden')) {
+        const sections = ['hero', 'videos', 'contacto'];
+        const scrollPosition = window.scrollY + 120;
+
+        sections.forEach(secId => {
+          const section = document.getElementById(secId);
+          if (section) {
+            const top = section.offsetTop;
+            const height = section.offsetHeight;
+            if (scrollPosition >= top && scrollPosition < top + height) {
+              navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-anchor') === secId) {
+                  link.classList.add('active');
+                }
+              });
+            }
+          }
+        });
+      }
+    });
+
+    // Botón Volver Arriba
+    document.getElementById('scroll-top-btn').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ==========================================
+       3. SISTEMA DE BÚSQUEDA FLUIDA
+       ========================================== */
+    const searchToggleBtn = document.getElementById('search-toggle-btn');
+    const searchInput = document.getElementById('search-input');
+    
+    searchToggleBtn.addEventListener('click', () => {
+      const isOpen = searchInput.classList.toggle('open');
+      if (isOpen) {
+        searchInput.focus();
+      }
+    });
+
+    // Buscar y filtrar en tiempo real en ambas vistas
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      
+      // 1. Filtrar tarjetas de la sección de productos
+      const productCards = document.querySelectorAll('.producto-card');
+      productCards.forEach(card => {
+        const searchText = card.getAttribute('data-search') || '';
+        const titleText = card.querySelector('.producto-card-title').textContent.toLowerCase();
+        if (searchText.includes(term) || titleText.includes(term) || term === '') {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // 2. Filtrar galería en tiempo real si está abierta o para cuando se abra
+      const galleryCards = document.querySelectorAll('.gallery-card');
+      galleryCards.forEach(card => {
+        const name = card.getAttribute('data-name').toLowerCase();
+        const desc = card.getAttribute('data-desc').toLowerCase();
+        const cat = card.getAttribute('data-category').toLowerCase();
+        if (name.includes(term) || desc.includes(term) || cat.includes(term) || term === '') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    /* ==========================================
+       4. FILTROS DE GALERÍA E INTERACTIVIDAD
+       ========================================== */
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    const galleryCards = document.querySelectorAll('.gallery-card');
+
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remover clase activa de todos
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filterVal = tab.getAttribute('data-filter');
+        
+        galleryCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          
+          if (filterVal === 'all' || category === filterVal) {
+            card.style.opacity = '0';
+            card.style.display = 'block';
+            setTimeout(() => {
+              card.style.opacity = '1';
+            }, 50);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* ==========================================
+       5. DETECTOR DE REVELACIÓN EN DESPLAZAMIENTO (SCROLL REVEAL)
+       ========================================== */
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Una vez activado, no necesitamos volver a observarlo
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12, // Activación cuando el 12% del elemento es visible
+      rootMargin: "0px 0px -40px 0px"
+    });
+
+    revealElements.forEach(elem => revealObserver.observe(elem));
+
+    /* ==========================================
+       6. LIGHTBOX MODAL (VISUALIZACIÓN DE IMÁGENES)
+       ========================================== */
+    const lightbox = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+    const lightboxNext = document.getElementById('lightbox-next');
+
+    let currentGalleryIndex = 0;
+    let activeGalleryCards = [];
+
+    function updateActiveCards() {
+      // Tomamos solo las tarjetas que están actualmente visibles (que pasan los filtros de búsqueda y categoría)
+      activeGalleryCards = Array.from(galleryCards).filter(card => card.style.display !== 'none');
+    }
+
+    function openLightbox(index) {
+      updateActiveCards();
+      currentGalleryIndex = index;
+      const card = activeGalleryCards[currentGalleryIndex];
+      if (!card) return;
+      
+      const img = card.querySelector('.gallery-img');
+      const name = card.getAttribute('data-name');
+      const desc = card.getAttribute('data-desc');
+
+      lightboxImg.src = img.src;
+      lightboxCaption.innerHTML = `<strong>${name}</strong><br><span style="font-size:0.85rem; font-weight:400; color:var(--text-light-muted);">${desc}</span>`;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+    }
+
+    function navigateLightbox(direction) {
+      updateActiveCards();
+      if (activeGalleryCards.length === 0) return;
+      
+      currentGalleryIndex = (currentGalleryIndex + direction + activeGalleryCards.length) % activeGalleryCards.length;
+      openLightbox(currentGalleryIndex);
+    }
+
+    // Configurar eventos en tarjetas de galería
+    galleryCards.forEach((card, idx) => {
+      card.addEventListener('click', () => {
+        updateActiveCards();
+        const actualIndex = activeGalleryCards.indexOf(card);
+        if (actualIndex !== -1) {
+          openLightbox(actualIndex);
+        }
+      });
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', () => navigateLightbox(-1));
+    lightboxNext.addEventListener('click', () => navigateLightbox(1));
+    
+    // Cerrar al hacer clic en el fondo oscuro
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    // Teclado para lightbox
+    window.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') navigateLightbox(-1);
+      if (e.key === 'ArrowRight') navigateLightbox(1);
+    });
+
+    /* ==========================================
+       7. REPRODUCTOR DE VIDEO MODAL
+       ========================================== */
+    const videoModal = document.getElementById('video-modal');
+    const videoIframe = document.getElementById('video-iframe');
+    const videoModalClose = document.getElementById('video-modal-close');
+    const videoCards = document.querySelectorAll('.video-card');
+
+    videoCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const videoSrc = card.getAttribute('data-video-src');
+        // Agregar autogiro y remover controles para un look Premium
+        videoIframe.src = `${videoSrc}?autoplay=1`;
+        videoModal.classList.add('active');
+      });
+    });
+
+    function closeVideoModal() {
+      videoModal.classList.remove('active');
+      videoIframe.src = '';
+    }
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) {
+        closeVideoModal();
+      }
+    });
+
+    /* ==========================================
+       8. SIMULACIÓN DE FORMULARIO DE CONTACTO
+       ========================================== */
+    const contactForm = document.getElementById('contact-form');
+    const formSuccess = document.getElementById('form-success');
+
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      
+      // Simular carga con desvanecimiento
+      const submitBtn = contactForm.querySelector('.form-submit-btn');
+      const originalBtnText = submitBtn.innerHTML;
+      
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <span>PROCESANDO...</span>
+        <svg viewBox="0 0 24 24" style="animation: spin 1s linear infinite;">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" style="opacity: 0.25;"></circle>
+          <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      `;
+
+      setTimeout(() => {
+        // Ocultar formulario con animación
+        contactForm.style.transition = 'opacity 0.4s ease';
+        contactForm.style.opacity = '0';
+        
+        setTimeout(() => {
+          contactForm.classList.add('hidden');
+          formSuccess.classList.remove('hidden');
+          formSuccess.style.display = 'flex';
+        }, 400);
+
+      }, 1500);
+    }
+
+    // Agregar animación giratoria para el procesando
+    const styleElem = document.createElement('style');
+    styleElem.innerHTML = `
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(styleElem);
+  </script>
+</body>
+</html>
