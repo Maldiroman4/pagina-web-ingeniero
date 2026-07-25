@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Metalúrgica JOR-CIT - Ingeniería y fabricación de engranajes de alta precisión desde 1982.">
-  <title>Metalúrgica JOR-CIT | Ingeniería de Engranajes Premium</title>
+  <meta name="description" content="URUS - Ingeniería y fabricación de engranajes de alta precisión.">
+  <title>URUS | Ingeniería y Fabricación de Engranajes</title>
   
   <!-- Google Fonts: Montserrat & Lora -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,14 +134,24 @@
     }
 
     .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
       font-family: var(--font-brand);
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 1.4rem;
+      font-weight: 800;
       letter-spacing: 1px;
       background: linear-gradient(95deg, #ffffff 0%, #7dd3fc 50%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .brand-logo-img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
     }
 
     .nav-menu {
@@ -579,6 +589,13 @@
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
+      padding: 6px;
+    }
+
+    .cap-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .cap-icon svg {
@@ -823,6 +840,13 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.2rem;
+      padding: 6px;
+    }
+
+    .cap-card-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
 
     .cap-card-icon svg {
@@ -1168,7 +1192,8 @@
        ========================================================================== -->
   <header id="header">
     <a href="#hero" class="brand-logo route-home">
-      Metalúrgica JOR-CIT
+      <img src="img/logo_urus.png" alt="URUS Logo" class="brand-logo-img">
+      <span>URUS</span>
     </a>
 
     <nav class="nav-menu">
@@ -1252,17 +1277,17 @@
             </div>
 
             <h1 class="hero-title">
-              METALÚRGICA<br>
-              <span class="hero-title-gradient">JOR-CIT</span>
+              ENGRANAJES<br>
+              <span class="hero-title-gradient">URUS</span>
             </h1>
 
             <p class="hero-text">
-              Desde el año 1982 nos dedicamos a la fabricación y fresado de engranajes. Contamos para ello con varias máquinas creadoras y talladoras de distintas capacidades de trabajo, lo que nos permite dar una amplia respuesta a nuestros clientes.
+              Nos dedicamos a la fabricación y fresado de engranajes y ruedas dentadas. Contamos con máquinas creadoras y talladoras de distintas capacidades de trabajo para ofrecer respuestas de precisión a nuestros clientes.
             </p>
 
             <div class="hero-buttons">
               <a href="#contacto" class="btn-primary route-home" data-anchor="contacto">Solicitar Cotización</a>
-              <a href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20Metal%C3%BArgica%20JOR-CIT." target="_blank" class="btn-whatsapp">
+              <a href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20URUS." target="_blank" class="btn-whatsapp">
                 <svg viewBox="0 0 24 24">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
@@ -1401,7 +1426,7 @@
         <div class="capacidades-grid">
           <div class="cap-item">
             <div class="cap-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" stroke="currentColor" stroke-width="2"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <div>
               <h3 class="cap-title">Diferentes tipos de Engranajes</h3>
@@ -1411,7 +1436,7 @@
 
           <div class="cap-item">
             <div class="cap-icon">
-              <svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M9 9h6v6H9z" stroke="currentColor" stroke-width="2"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <div>
               <h3 class="cap-title">Ejes Estriados Normalizados</h3>
@@ -1421,7 +1446,7 @@
 
           <div class="cap-item">
             <div class="cap-icon">
-              <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <div>
               <h3 class="cap-title">Ruedas Sincrónicas.</h3>
@@ -1431,7 +1456,7 @@
 
           <div class="cap-item">
             <div class="cap-icon">
-              <svg viewBox="0 0 24 24" fill="none"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <div>
               <h3 class="cap-title">Piñones y Coronas para Cadenas según ASA, BS y Tsubakimoto</h3>
@@ -1550,7 +1575,7 @@
         <div class="cap-grid">
           <div class="cap-card">
             <div class="cap-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14v6"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <h3 class="cap-card-title">Operación de Creadoras y Talladoras CNC</h3>
             <p class="cap-card-desc">Puesta a punto, selección de herramientas, velocidad de corte y parámetros óptimos de tallado de engranajes.</p>
@@ -1558,7 +1583,7 @@
 
           <div class="cap-card">
             <div class="cap-card-icon">
-              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <h3 class="cap-card-title">Geometría y Cálculo (Módulo y DP)</h3>
             <p class="cap-card-desc">Formulación matemática de dentados rectos, helicoidales, sinfines y estriados bajo normativas ISO y ANSI.</p>
@@ -1566,7 +1591,7 @@
 
           <div class="cap-card">
             <div class="cap-card-icon">
-              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <h3 class="cap-card-title">Mantenimiento y Diagnóstico de Falla</h3>
             <p class="cap-card-desc">Identificación de desgaste prematuro, alineación de ejes en reductores y métodos de lubricación industrial.</p>
@@ -1574,7 +1599,7 @@
 
           <div class="cap-card">
             <div class="cap-card-icon">
-              <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/></svg>
+              <img src="img/logo_urus.png" alt="URUS Logo">
             </div>
             <h3 class="cap-card-title">Selección de Materiales y Tratamientos</h3>
             <p class="cap-card-desc">Criterios de elección de aceros aleados, cementación, nitruración y bronce fosforado para transmisiones.</p>
@@ -1593,7 +1618,7 @@
         <div class="contacto-grid">
           
           <div class="contacto-info-card">
-            <h3 class="contacto-info-title">METALÚRGICA JOR-CIT</h3>
+            <h3 class="contacto-info-title">ENGRANAJES URUS</h3>
             <ul class="contacto-info-list">
               <li class="contacto-info-item">
                 <div class="contacto-info-icon">
@@ -1601,7 +1626,7 @@
                 </div>
                 <div class="contacto-info-content">
                   <h4>DIRECCIÓN</h4>
-                  <p>Zona Industrial Metalúrgica, Buenos Aires, Argentina</p>
+                  <p>Zona Industrial Metalúrgica, Bolivia</p>
                 </div>
               </li>
 
@@ -1611,7 +1636,7 @@
                 </div>
                 <div class="contacto-info-content">
                   <h4>TELÉFONOS</h4>
-                  <p>+54 11 4455-8899 / +54 9 11 5566-7788</p>
+                  <p>+54 9 11 6249-3103</p>
                 </div>
               </li>
 
@@ -1621,7 +1646,7 @@
                 </div>
                 <div class="contacto-info-content">
                   <h4>CORREO ELECTRÓNICO</h4>
-                  <p>contacto@metalurgicajorcit.com.ar</p>
+                  <p>contacto@engranajes.com.bo</p>
                 </div>
               </li>
             </ul>
@@ -1731,7 +1756,7 @@
   </div>
 
   <!-- BOTÓN FLOTANTE WHATSAPP -->
-  <a href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20Metal%C3%BArgica%20JOR-CIT." target="_blank" class="whatsapp-float-btn" aria-label="Contactar por WhatsApp">
+  <a href="https://wa.me/5491162493103?text=Hola%20Ing.%20Antezana%2C%20me%20comunico%20desde%20la%20p%C3%A1gina%20web%20de%20URUS." target="_blank" class="whatsapp-float-btn" aria-label="Contactar por WhatsApp">
     <svg viewBox="0 0 24 24">
       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
     </svg>
