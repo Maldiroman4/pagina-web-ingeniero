@@ -147,23 +147,75 @@
     .nav-menu {
       display: flex;
       align-items: center;
-      gap: 2rem;
+      gap: 1.2rem;
     }
 
     .nav-link {
-      font-size: 0.85rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--text-muted);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       cursor: pointer;
-      padding: 0.4rem 0.6rem;
-      border-radius: 20px;
+      padding: 0.35rem 0.75rem;
+      border-radius: 12px;
       transition: var(--transition);
+      color: var(--text-muted);
+      line-height: 1.25;
+      text-decoration: none;
+    }
+
+    .nav-link-main {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .nav-link-sub {
+      font-size: 0.68rem;
+      font-weight: 500;
+      color: var(--accent-sky);
+      text-transform: none;
+      letter-spacing: 0.2px;
+      margin-top: 2px;
+      opacity: 0.85;
+      white-space: nowrap;
     }
 
     .nav-link:hover, .nav-link.active {
       color: var(--accent-sky);
+      background: rgba(56, 189, 248, 0.08);
+    }
+
+    .nav-link:hover .nav-link-sub, .nav-link.active .nav-link-sub {
+      color: #7dd3fc;
+      opacity: 1;
+    }
+
+    /* Mobile Nav Drawer */
+    .mobile-nav {
+      position: fixed;
+      top: 5.5rem;
+      right: -100%;
+      width: 88%;
+      max-width: 320px;
+      background: rgba(5, 11, 22, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: var(--transition);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+    }
+
+    .mobile-nav.open {
+      right: 4%;
     }
 
     /* Buscador Integrado */
@@ -1120,11 +1172,23 @@
     </a>
 
     <nav class="nav-menu">
-      <a class="nav-link active route-home" data-anchor="hero">Home</a>
-      <a class="nav-link route-gallery" id="nav-gallery-link">Trabajos</a>
-      <a class="nav-link route-home" data-anchor="videos">Videos</a>
-      <a class="nav-link route-home" data-anchor="capacitacion">Capacitación</a>
-      <a class="nav-link route-home" data-anchor="contacto">Contacto</a>
+      <a class="nav-link active route-home" data-anchor="hero">
+        <span class="nav-link-main">Inicio</span>
+      </a>
+      <a class="nav-link route-gallery" id="nav-gallery-link">
+        <span class="nav-link-main">Trabajos</span>
+        <span class="nav-link-sub">Ruedas dentadas</span>
+      </a>
+      <a class="nav-link route-home" data-anchor="videos">
+        <span class="nav-link-main">Videos</span>
+      </a>
+      <a class="nav-link route-home" data-anchor="capacitacion">
+        <span class="nav-link-main">Capacitación</span>
+        <span class="nav-link-sub">Transmisiones Mecánicas...</span>
+      </a>
+      <a class="nav-link route-home" data-anchor="contacto">
+        <span class="nav-link-main">Contacto</span>
+      </a>
       
       <div class="search-wrapper">
         <button class="search-btn" id="search-toggle-btn" aria-label="Abrir buscador">
@@ -1143,6 +1207,27 @@
       </svg>
     </button>
   </header>
+
+  <!-- MENÚ MOBILE DRAWER -->
+  <nav class="mobile-nav" id="mobile-menu">
+    <a class="nav-link active route-home" data-anchor="hero">
+      <span class="nav-link-main">Inicio</span>
+    </a>
+    <a class="nav-link route-gallery">
+      <span class="nav-link-main">Trabajos</span>
+      <span class="nav-link-sub">Ruedas dentadas</span>
+    </a>
+    <a class="nav-link route-home" data-anchor="videos">
+      <span class="nav-link-main">Videos</span>
+    </a>
+    <a class="nav-link route-home" data-anchor="capacitacion">
+      <span class="nav-link-main">Capacitación</span>
+      <span class="nav-link-sub">Transmisiones Mecánicas...</span>
+    </a>
+    <a class="nav-link route-home" data-anchor="contacto">
+      <span class="nav-link-main">Contacto</span>
+    </a>
+  </nav>
 
   <!-- ==========================================================================
        VISTA HOME
@@ -1667,8 +1752,17 @@
     const galleryView = document.getElementById('gallery-view');
     const navLinks = document.querySelectorAll('.nav-link');
     const header = document.getElementById('header');
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (mobileToggle && mobileMenu) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+      });
+    }
 
     function navigateToView(viewName) {
+      if (mobileMenu) mobileMenu.classList.remove('open');
       if (viewName === 'gallery') {
         homeView.classList.add('hidden');
         galleryView.classList.remove('hidden');
