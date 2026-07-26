@@ -1272,9 +1272,24 @@
       header { width: 96%; padding: 0 1.2rem; }
       .nav-menu { display: none; }
       .mobile-toggle { display: block; }
-      .hero-title { font-size: 2.5rem; }
+      .hero-section { text-align: center; }
+      .hero-badge { margin: 0 auto 1.5rem auto; }
+      .hero-title { text-align: center; font-size: 2.5rem; }
+      .hero-text { text-align: center; margin-left: auto; margin-right: auto; }
+      .hero-buttons { justify-content: center; }
       .capacidades-grid, .prod-grid, .videos-grid, .cap-grid, .contacto-grid, .gallery-grid {
         grid-template-columns: 1fr;
+      }
+      .contacto-info-card { text-align: center; }
+      .contacto-info-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .contacto-info-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
     }
 
@@ -1292,6 +1307,10 @@
       }
       .hero-title {
         font-size: 2rem;
+      }
+      .hero-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
       }
     }
   </style>
