@@ -11,8 +11,8 @@
   <meta property="og:title" content="Javier | Javier de los Engranajes">
   <meta property="og:description" content="Javier - Ingeniería y fabricación de engranajes de alta precisión.">
   <meta property="og:url" content="https://engranajes.com.bo/">
-  <meta property="og:image" content="https://engranajes.com.bo/img/logo_urus.png">
-  <meta property="og:image:secure_url" content="https://engranajes.com.bo/img/logo_urus.png">
+  <meta property="og:image" content="https://engranajes.com.bo/img/og_preview.png">
+  <meta property="og:image:secure_url" content="https://engranajes.com.bo/img/og_preview.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="300">
   <meta property="og:image:height" content="300">
@@ -21,7 +21,7 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Javier | Javier de los Engranajes">
   <meta name="twitter:description" content="Javier - Ingeniería y fabricación de engranajes de alta precisión.">
-  <meta name="twitter:image" content="https://engranajes.com.bo/img/logo_urus.png">
+  <meta name="twitter:image" content="https://engranajes.com.bo/img/og_preview.png">
   
   <!-- Google Fonts: Montserrat & Lora -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1275,6 +1275,23 @@
       .hero-title { font-size: 2.5rem; }
       .capacidades-grid, .prod-grid, .videos-grid, .cap-grid, .contacto-grid, .gallery-grid {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-logo {
+        font-size: 1.15rem;
+        gap: 0.4rem;
+      }
+      .brand-logo-img {
+        height: 32px;
+      }
+      .brand-flag-ar {
+        width: 32px;
+        height: 22px;
+      }
+      .hero-title {
+        font-size: 2rem;
       }
     }
   </style>
